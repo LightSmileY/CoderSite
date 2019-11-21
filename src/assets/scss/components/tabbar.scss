@@ -1,0 +1,21 @@
+@import '@/assets/scss/public/variables';
+@import '@/assets/scss/public/mixins';
+
+#tabbar{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 40px;
+  border-top: 1px solid #E3E3E3;
+  @include flex-center();
+
+  li{
+    flex-grow: 1;
+    @include flex-center(column);
+
+    img{
+      width: 27px;
+      height: 27px;
+    }
+  }
+}
