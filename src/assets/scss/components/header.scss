@@ -3,13 +3,22 @@
 
 #header{
   position: fixed;
+  height: 35px;
   top: 0;
   width: 100%;
+  box-shadow: $header-shadow;
   background-color: #fff;
+  font-size: 17px;
   @include flex-center(column);
   z-index: $header-index;
-  
-  .box{
-    width: 96%;
+
+  .goback{
+    position: absolute;
+    left: 3px;
+    top: 0;
+
+    img{
+      width: 32px;
+    }
   }
-}
+} 
