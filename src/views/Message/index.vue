@@ -2,40 +2,41 @@
   <div id="message">
     <van-nav-bar
       fixed="true"
-      title="标题"
-      left-text="返回"
-      right-text="按钮"
-      left-arrow
-      @click-left=""
-      @click-right=""
+      z-index="1000"
+      title="消息"
     />
     <div class="main">
       <!-- 标签页 -->
       <van-tabs 
-      v-model="active" 
+      v-model="active"
       swipeable
-      sticky="true"
       title-active-color="#90C2EF">
         <van-tab 
-        title="选项"
+        title="最新"
         >
         <!-- 下拉刷新 -->
           <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-            <div class="message-list">1</div>
+            <div class="message-list">
+              <message-list/>
+            </div>
           </van-pull-refresh>
         </van-tab>
         <van-tab 
-        title="选项"
+        title="回答"
         >
           <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-            <div class="answer-list">2</div>
+            <div class="answer-list">
+              <answer-list/>
+            </div>
           </van-pull-refresh>
         </van-tab>
         <van-tab 
-        title="选项"
+        title="私聊"
         >
           <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-            <div class="chat-list">3</div>
+            <div class="chat-list">
+              <chat-list/>
+            </div>
           </van-pull-refresh>
         </van-tab>
       </van-tabs>
@@ -47,6 +48,9 @@
 <script>
   import TabBar from '@/components/tabbar'
   import Header from '@/components/header'
+  import MessageList from '@/components/messageList'
+  import AnswerList from '@/components/answerList'
+  import ChatList from '@/components/chatList'
 
   export default {
     data(){
@@ -56,7 +60,10 @@
     },
     components: {
       TabBar,
-      Header
+      Header,
+      MessageList,
+      AnswerList,
+      ChatList
     },
     methods: {
       onRefresh() {

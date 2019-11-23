@@ -5,14 +5,14 @@
   @include flex-center();
 
   .main{  /* 导航栏 */
-    width: 95%;
+    width: 92%;
     margin-top: 50px;
 
     .message-list,
     .answer-list,
     .chat-list{
       min-height: 100vh;
-      background-color: #DEF6F2;
+      margin-bottom: 55px;
     }
   }
 }
