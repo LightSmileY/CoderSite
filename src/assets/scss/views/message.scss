@@ -4,27 +4,15 @@
 #message{
   @include flex-center();
 
-  .navbar{  /* 导航栏 */
-    position: fixed;
-    top: 36px;
-    width: 100%;
-    height: 40px;
-    background-color: #fff;
-    border-bottom: 1px solid $border-lighter;
-    @include flex-center();
-    z-index: $header-index;
-
-    li{
-      flex-grow: 1;
-      height: 100%;
-      @include flex-center(colunm);
-    }
-    .li-active{
-      border-bottom: 4px solid #84E7CC;
-    }
-  }
-  .main{
-    margin-top: 85px;
+  .main{  /* 导航栏 */
     width: 95%;
+    margin-top: 50px;
+
+    .message-list,
+    .answer-list,
+    .chat-list{
+      min-height: 100vh;
+      background-color: #DEF6F2;
+    }
   }
 }
