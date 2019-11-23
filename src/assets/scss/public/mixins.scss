@@ -1,3 +1,5 @@
+@import '@/assets/scss/public/variables';
+
 // flex-center  垂直水平居中
 @mixin flex-center($direction: row) {
   display: flex;
@@ -6,3 +8,28 @@
   flex-direction: $direction;
 }
 
+// flex-space-around
+@mixin flex-space-around() {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+// flex-space-between
+@mixin flex-space-between() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+// 遮罩层
+@mixin mask() {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $mask-color;
+  z-index: $mask-index;
+}
