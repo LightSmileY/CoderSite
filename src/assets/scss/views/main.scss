@@ -2,14 +2,34 @@
 @import '@/assets/scss/public/mixins';
 
 #main{
-  .swiper{
-    position: relative;
-    top: 50px;
-    width: 96%;
+  width: 100%;
+  @include flex-center();
 
-    img{
+  .container{  /* 96%宽度的盒子，留下2%左右边距 */
+    width: 96%;
+    margin-bottom: 50px;
+
+    .swiper{  /* 幻灯片 */
+      margin-top: 50px;
       width: 100%;
-      height: 100%;
+
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .extends{ /* 扩展功能区 */
+      width: 100%;
+      margin: 10px 0;
+      background-color: #FFECEC;
+    }
+    .hot,
+    .youlike{ /* 猜你喜欢、热门帖子 */
+      
+      .title{
+        font-size: 18px;
+        line-height: 40px;
+      }
     }
   }
 }
