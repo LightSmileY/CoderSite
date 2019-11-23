@@ -1,2 +1,30 @@
 @import '@/assets/scss/public/variables';
 @import '@/assets/scss/public/mixins';
+
+#message{
+  @include flex-center();
+
+  .navbar{  /* 导航栏 */
+    position: fixed;
+    top: 36px;
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    border-bottom: 1px solid $border-lighter;
+    @include flex-center();
+    z-index: $header-index;
+
+    li{
+      flex-grow: 1;
+      height: 100%;
+      @include flex-center(colunm);
+    }
+    .li-active{
+      border-bottom: 4px solid #84E7CC;
+    }
+  }
+  .main{
+    margin-top: 85px;
+    width: 95%;
+  }
+}
