@@ -1,0 +1,29 @@
+@import '@/assets/scss/public/variables';
+@import '@/assets/scss/public/mixins';
+
+#extends{
+  width: 100%;
+  @include flex-space-around();
+
+  li{
+    width: 25%;
+    margin: 7px 0;
+    @include flex-center(column);
+
+    .image{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+
+      img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+    .label{
+      margin-top: 3px;
+      font-size: 13px;
+    }
+  }
+}
