@@ -11,9 +11,7 @@
       </router-link>
     </li>
     <li>
-      <router-link to="/publish">
-        <img src="@/assets/icons/publish.png" alt="">
-      </router-link>
+      <img src="@/assets/icons/publish.png" alt="">
     </li>
     <li>
       <router-link to="/message">
