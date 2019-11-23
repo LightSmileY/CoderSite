@@ -1,0 +1,15 @@
+@import '@/assets/scss/public/variables';
+@import '@/assets/scss/public/mixins';
+
+#searchbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  @include flex-center(column);
+  z-index: $header-index;
+  
+  .box{
+    width: 96%;
+  }
+} 
