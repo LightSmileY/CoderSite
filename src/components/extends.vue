@@ -2,9 +2,18 @@
   <ul id="extends">
     <li v-for="item in 8">
       <div class="image">
-        <img src="@/assets/icons/index.png" alt="">
+        <!-- van图片 -->
+        <van-image
+          lazy-load
+          fit="cover"
+          src="http://cdn.fengblog.xyz/logo.png">
+          <template v-slot:loading>
+            <van-loading type="spinner" size="20" />
+          </template>
+          <template v-slot:error>加载失败</template>
+        </van-image>
       </div>
-      <div class="label">功能一</div>
+      <div class="label">功能{{item}}</div>
     </li>
   </ul>
 </template>

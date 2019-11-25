@@ -4,7 +4,16 @@
       <div class="user">
         <div class="user-info">
           <div class="avatar">
-            
+            <!-- van图片 -->
+            <van-image
+              lazy-load
+              fit="cover"
+              src="http://cdn.fengblog.xyz/avatar.jpg">
+              <template v-slot:loading>
+                <van-loading type="spinner" size="20" />
+              </template>
+              <template v-slot:error>加载失败</template>
+            </van-image>
           </div>
           <div class="name-time">
             <div class="name">
@@ -33,7 +42,16 @@
       </div>
       <div class="detail">
         <div class="image">
-          
+          <!-- van图片 -->
+          <van-image
+            lazy-load
+            fit="cover"
+            src="http://cdn.fengblog.xyz/makeup.jpg">
+            <template v-slot:loading>
+              <van-loading type="spinner" size="20" />
+            </template>
+            <template v-slot:error>加载失败</template>
+          </van-image>
         </div>
         <div class="desc">
           哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或

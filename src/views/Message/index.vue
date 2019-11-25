@@ -5,7 +5,7 @@
       z-index="1000"
       title="消息"
     />
-    <div class="main">
+    <div id="main">
       <!-- 标签页 -->
       <van-tabs 
       v-model="active"

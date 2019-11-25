@@ -3,7 +3,16 @@
     <li v-for="item in 5">
       <div class="infos">
         <div class="avatar">
-          
+          <!-- van图片 -->
+          <van-image
+            lazy-load
+            fit="cover"
+            src="http://cdn.fengblog.xyz/avatar.jpg">
+            <template v-slot:loading>
+              <van-loading type="spinner" size="20" />
+            </template>
+            <template v-slot:error>加载失败</template>
+          </van-image>
         </div>
         <div class="name-message">
           <div class="name">

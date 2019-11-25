@@ -4,9 +4,13 @@
 #message{
   @include flex-center();
 
-  .main{  /* 导航栏 */
+  #main{  /* 导航栏 */
     width: 92%;
     margin-top: 50px;
+
+    .van-tabs__line{
+      background-color: #55A5F3;
+    }
 
     .message-list,
     .answer-list,

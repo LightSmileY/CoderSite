@@ -2,11 +2,8 @@
   <div id="mine">
     <van-nav-bar
     fixed="true"
-    title="标题"
-    left-text="返回"
-    right-text="按钮"
-    left-arrow
-    @click-left=""
+    title="个人中心"
+    right-text="更多"
     @click-right=""
   />
     <tab-bar/>

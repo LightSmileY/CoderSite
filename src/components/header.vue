@@ -1,6 +1,7 @@
 <template>
   <ul id="header">
     header
+    <van-icon name="arrow-left" />
   </ul>
 </template>
 
