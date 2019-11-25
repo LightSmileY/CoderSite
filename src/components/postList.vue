@@ -3,7 +3,16 @@
     <li v-for="item in 5">
       <!-- 左边图片 -->
       <div class="image">
-        <!-- <img src="@/assets/icons/index.png" alt=""> -->
+        <!-- van图片 -->
+        <van-image
+          lazy-load
+          fit="cover"
+          src="http://cdn.fengblog.xyz/makeup.jpg">
+          <template v-slot:loading>
+            <van-loading type="spinner" size="20" />
+          </template>
+          <template v-slot:error>加载失败</template>
+        </van-image>
       </div>
       <div class="section">
         <!-- 文章首段 -->
