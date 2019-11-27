@@ -24,6 +24,14 @@
   flex-wrap: wrap;
 }
 
+// 居中右对齐
+@mixin flex-jus-end() {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 // 遮罩层
 @mixin mask() {
   position: absolute;
