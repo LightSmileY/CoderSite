@@ -1,6 +1,6 @@
 <template>
   <ul id="postList">
-    <li v-for="item in 5" @click="toArticleDetailPage(123)">
+    <li class="postList-item" v-for="item in 5" @click="toArticleDetailPage(123)">
       <!-- 左边图片 -->
       <div class="image">
         <!-- van图片 -->
@@ -19,19 +19,19 @@
         <div class="desc">哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或</div>
         <!-- 点赞、评论、收藏信息 -->
         <ul class="operinfo">
-          <li class="item">
+          <li class="operinfo-item">
             <div class="icon">
               <img src="@/assets/icons/index.png" alt="">
             </div>
             <div class="label">234</div>
           </li>
-          <li class="item">
+          <li class="operinfo-item">
             <div class="icon">
               <img src="@/assets/icons/index.png" alt="">
             </div>
             <div class="label">335</div>
           </li>
-          <li class="item">
+          <li class="operinfo-item">
             <div class="icon">
               <img src="@/assets/icons/index.png" alt="">
             </div>
