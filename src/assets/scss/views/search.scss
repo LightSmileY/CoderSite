@@ -1,2 +1,75 @@
 @import '@/assets/scss/public/variables';
 @import '@/assets/scss/public/mixins';
+
+#search{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .searchbar{
+    position: fixed;
+    top: 0;
+    width: 96%;
+    background-color: #fff;
+    @include flex-center();
+    z-index: $header-index;
+    
+    .box{
+      flex-grow: 1;
+    }
+  }
+
+  .navigation{
+    margin-top: 45px;
+
+    .newsearch,
+    .youlike{
+
+      ul{
+        height: 90px;
+        padding: 0 7px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        overflow: hidden;
+
+        li{
+          margin: 0 7px;
+          height: 24px;
+          line-height: 24px;
+          padding: 0 10px;
+          background-color: #F2F2F2;
+          border-radius: 12px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .hotSearch{
+    margin-top: 15px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+
+    .title{
+      line-height: 30px;
+      font-weight: bold;
+    }
+    
+    .hotSearchList{
+      margin-top: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px 10px;
+      border-radius: $border-big;
+      box-shadow: $light-shadow;
+
+      ul{
+        li{
+          line-height: 30px;
+          color: $primary-text;
+        }
+      }
+    }
+  }
+}
