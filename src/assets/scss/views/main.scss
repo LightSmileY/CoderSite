@@ -22,12 +22,14 @@
       width: 100%;
       margin-top: 10px;
     }
+
     .hot,
     .youlike{ /* 猜你喜欢、热门帖子 */
+      margin-top: 5px;
       
       .title{
-        font-size: 18px;
-        line-height: 40px;
+        font-weight: bold;
+        line-height: 30px;
       }
     }
   }

@@ -6,7 +6,8 @@
         placeholder="搜索你想要的内容···"
         show-action
         shape="round"
-        @search="onSearch"
+        disabled
+        @click="toSearchPage"
       >
         <div slot="action" @click="onSearch">搜索</div>
       </van-search>
@@ -22,8 +23,10 @@
       }
     },
     methods: {
-      onSearch(){
-        
+      toSearchPage(){
+        this.$router.push({
+          name:'search'
+        })
       }
     }
   };
