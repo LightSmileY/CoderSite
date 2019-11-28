@@ -4,7 +4,7 @@
       fixed="true"
       left-arrow
       @click-left="goBack"
-      title="详情"/>
+      title="文章"/>
     <div class="container">
       <div class="article">
         <!-- 下拉刷新 -->
@@ -74,6 +74,7 @@
             </ul>
           </div>
           <van-divider content-position="left">评论</van-divider>
+          <comment-list/>
         </van-pull-refresh>
       </div>
     </div>
@@ -82,6 +83,7 @@
 
 <script>
   import TabBar from '@/components/tabbar'
+  import CommentList from '@/components/commentList'
 
   export default {
     data(){
@@ -90,7 +92,8 @@
       }
     },
     components: {
-      TabBar
+      TabBar,
+      CommentList
     },
     methods: {
       goBack(){

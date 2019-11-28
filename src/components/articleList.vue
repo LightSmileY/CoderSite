@@ -1,6 +1,6 @@
 <template>
   <ul id="articleList">
-    <li v-for="item in 10">
+    <li v-for="item in 10" @click="toQuestionDetailPage(123)">
       <div class="image">
         <!-- van图片 -->
         <van-image
@@ -53,6 +53,15 @@
     },
     props: {
       
+    },
+    methods: {
+      // 去文章详情页
+      toQuestionDetailPage(i){
+        this.$router.push({
+          name:'questionDetail',
+          query: { id: i }
+        })
+      }
     }
   };
 </script>
