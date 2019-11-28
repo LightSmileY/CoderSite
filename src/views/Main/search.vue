@@ -12,7 +12,7 @@
           shape="round"
           @search="onSearch"
         >
-          <div slot="action" @click="onSearch">搜索</div>
+          <div slot="action" @click="onSearch(value)">搜索</div>
         </van-search>
       </div>
     </div>
@@ -35,7 +35,7 @@
         <div class="hotSearchList">
           <ul>
             <li v-for="item in 10">
-              {{item}}. 热门框架Vue开发Web APP
+              {{item}}<!-- . 热门框架Vue开发Web APP -->
             </li>
           </ul>
         </div>
@@ -53,8 +53,11 @@
       }
     },
     methods: {
-      onSearch(){
-
+      onSearch(i){
+        this.$router.push({
+          name:'searchDetail',
+          query: { id: i }
+        })
       },
       goBack(){
         this.$router.go(-1)

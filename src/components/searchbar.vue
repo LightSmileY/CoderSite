@@ -9,7 +9,7 @@
         disabled
         @click="toSearchPage"
       >
-        <div slot="action" @click="onSearch">搜索</div>
+        <div slot="action" @click="toSearchPage">搜索</div>
       </van-search>
     </div>
   </div>

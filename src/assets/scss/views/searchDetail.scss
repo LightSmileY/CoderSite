@@ -1,2 +1,62 @@
 @import '@/assets/scss/public/variables';
 @import '@/assets/scss/public/mixins';
+
+#searchDetail{
+  @include flex-center(column);
+
+  .searchbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 2%;
+    background-color: #fff;
+    @include flex-center();
+    z-index: $header-index;
+    
+    .box{
+      flex-grow: 1;
+    }
+  }
+
+  .navs{
+    width: 100%;
+    height: 30px;
+    margin-top: 55px;
+    @include flex-center();
+    border-top: 1px solid $border-lighter;
+    border-bottom: 1px solid $border-lighter;
+
+    ul{
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      li{
+        flex-grow: 1;
+        height: 100%;
+        @include flex-center();
+        font-size: 14px;
+        cplor: $primary-text;
+        border-right: 1px solid $border-lighter;
+
+        .label{
+          margin-right: 4px;
+        }
+      }
+      li:last-child{
+        border-right: 0;
+      }
+    }
+  }
+  .container{  /* 96%宽度的盒子，留下2%左右边距 */
+    width: 100%;
+    margin-bottom: 10px;
+    @include flex-center();
+    
+    .articleList{
+      margin-top: 5px;
+      width: 97%;
+    }
+  }
+}
