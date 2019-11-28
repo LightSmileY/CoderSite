@@ -137,7 +137,7 @@
 
    ```javascript
    {
-   	aid: "",
+     aid: "",
      uid: "",
      postTime: "",
      labels: [""],
@@ -251,10 +251,11 @@
 
     ```
     {
-    	id: "", 
-    	uid: "",    //评论者
-    	objId: "",  //被评论者
-    	pid: ""
+      id: "", 
+      uid: "",    //评论者
+      objId: "",  //被评论者
+      pid: "",
+      content: ""
     }
     ```
 
@@ -425,7 +426,7 @@
 
    ```javascript
    {
-   	aid: "",
+     aid: "",
      uid: "",
      postTime: "",
      labels: [""],
@@ -541,7 +542,17 @@
 
     方法：POST
 
-    参数：{id: "", qid: "", uid: ""}
+    参数：
+
+    ```
+    {
+      id: "", 
+      qid: "", 
+      uid: "",
+      objUid: "",
+      content: ""
+    }
+    ```
 
     返回值：
 
