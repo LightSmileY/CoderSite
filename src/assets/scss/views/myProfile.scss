@@ -1,2 +1,10 @@
 @import '@/assets/scss/public/variables';
 @import '@/assets/scss/public/mixins';
+
+#myProfile{
+
+	.container{
+		width: 96%;
+		margin-top: 45px;
+	}
+}
