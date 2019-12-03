@@ -5,12 +5,16 @@
 </template>
 
 <script>
+  import ArticleList from '@/components/articleList'
 
   export default {
     data(){
       return {
 
       }
+    },
+    components: {
+      ArticleList
     }
   };
 </script>
