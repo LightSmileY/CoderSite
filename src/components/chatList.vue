@@ -1,6 +1,6 @@
 <template>
   <ul id="chatList">
-    <li v-for="item in 5">
+    <li v-for="item in 5" @click="toChatDetailPage()">
       <div class="infos">
         <div class="avatar">
           <!-- van图片 -->
@@ -39,6 +39,14 @@
     },
     props: {
       
+    },
+    methods: {
+      toChatDetailPage(i){
+        this.$router.push({
+          name:'chatDetail',
+          query: { id: i }
+        })
+      }
     }
   };
 </script>
