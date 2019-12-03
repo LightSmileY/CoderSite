@@ -1,10 +1,10 @@
 <template>
-  <div id="myFanses">
+  <div id="myQuestions">
     <van-nav-bar
       fixed="true"
       left-arrow
       @click-left="goBack"
-      title="我的粉丝"/>
+      title="我的问题"/>
     <div class="container">
       <div class="articles">
         <!-- 下拉刷新 -->
@@ -39,5 +39,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/scss/views/myFanses';
+  @import '@/assets/scss/views/myQuestions';
 </style>

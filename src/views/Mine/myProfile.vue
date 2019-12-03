@@ -3,8 +3,8 @@
     <van-nav-bar
       fixed="true"
       title="资料"
-      right-text="更多"
-      @click-right=""
+      left-arrow
+      @click-left="goBack"
     />
     <div class="container">
       <!-- <van-cell-group>
@@ -66,6 +66,11 @@
       return {
         show: true
       }
+    },
+    methods: {
+      goBack(){
+        this.$router.go(-1)
+      },
     }
   };
 </script>

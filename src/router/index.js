@@ -58,19 +58,24 @@ export default new Router({
       component: () => import('@/views/Mine/myArticles')
     },
     {
+      path: '/myQuestions',
+      name: 'myQuestions',
+      component: () => import('@/views/Mine/myQuestions')
+    },
+    {
       path: '/myAttents',
       name: 'myAttents',
       component: () => import('@/views/Mine/myAttents')
     },
     {
-      path: '/myCollections',
-      name: 'myCollections',
-      component: () => import('@/views/Mine/myCollections')
-    },
-    {
       path: '/myFanses',
       name: 'myFanses',
       component: () => import('@/views/Mine/myFanses')
+    },
+    {
+      path: '/myCollections',
+      name: 'myCollections',
+      component: () => import('@/views/Mine/myCollections')
     },
     {
       path: '/myProfile',

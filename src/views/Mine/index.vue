@@ -3,8 +3,8 @@
     <van-nav-bar
       fixed="true"
       title="我的"
-      right-text="更多"
-      @click-right=""/>
+      right-text="资料"
+      @click-right="viewProfile"/>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <div class="container">
         <div class="banner">
@@ -40,22 +40,30 @@
           </div>
         </div>
         <ul class="infos">
+          <router-link to="/myArticles">
           <li>
             <div class="count">35</div>
             <div class="label">文章</div>
           </li>
+          </router-link>
+          <router-link to="/myQuestions">
           <li>
             <div class="count">18</div>
             <div class="label">问题</div>
           </li>
+          </router-link>
+          <router-link to="/myAttents">
           <li>
             <div class="count">13</div>
             <div class="label">关注</div>
           </li>
+          </router-link>
+          <router-link to="/myFanses">
           <li>
             <div class="count">234</div>
             <div class="label">粉丝</div>
           </li>
+          </router-link>
         </ul>
       </div>
     </van-pull-refresh>
@@ -83,6 +91,11 @@
           this.$toast('刷新成功')
           this.isLoading = false
         }, 500)
+      },
+      viewProfile(){
+        this.$router.push({
+          name: "myProfile"
+        })
       }
     }
   };
