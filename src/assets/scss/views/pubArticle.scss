@@ -1,2 +1,32 @@
 @import '@/assets/scss/public/variables';
 @import '@/assets/scss/public/mixins';
+
+#pubArticle{
+
+  .container{
+    margin-top: 45px;
+
+    .para{
+      
+      .uploadImage{
+        box-sizing: border-box;
+        padding: 10px 15px 0;
+      }
+    }
+
+    .addPara{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 5px 20px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .post{
+      box-sizing: border-box;
+      padding: 5px 20px;
+      display: flex;
+    }
+  }
+}
