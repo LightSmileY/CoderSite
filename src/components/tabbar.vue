@@ -13,7 +13,7 @@
     <li @click="showpub = !showpub">
       <img src="@/assets/icons/publish.png" alt="" v-if="!showpub">
       <img src="@/assets/icons/delete.png" alt="" v-if="showpub">
-      <div class="publish" v-if="showpub">
+      <div class="publish animated fadeInUp" v-if="showpub">
         <dl @click.stop="toPubArticlePage">
           <dt>
             <img src="@/assets/icons/post.png" alt="">
