@@ -1,13 +1,13 @@
 <template>
   <ul id="tabbar">
     <li>
-      <router-link to="/">
-        <img src="@/assets/icons/index.png" alt="">
+      <router-link to="/main">
+        <van-icon name="apps-o" />
       </router-link>
     </li>
     <li>
       <router-link to="/find">
-        <img src="@/assets/icons/find.png" alt="">
+        <van-icon name="eye-o" />
       </router-link>
     </li>
     <li @click="showpub = !showpub">
@@ -30,12 +30,12 @@
     </li>
     <li>
       <router-link to="/message">
-        <img src="@/assets/icons/message.png" alt="">
+        <van-icon name="chat-o" />
       </router-link>
     </li>
     <li>
       <router-link to="/mine">
-        <img src="@/assets/icons/mine.png" alt="">
+        <van-icon name="user-circle-o" />
       </router-link>
     </li>
   </ul>

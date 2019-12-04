@@ -18,11 +18,13 @@
       width: 100%;
       height: 100%;
       @include flex-center(column);
+      font-size: 30px;
+      color: #8a8a8a;
     }
 
     img{
-      width: 27px;
-      height: 27px;
+      width: 30px;
+      height: 30px;
     }
 
     .publish{
@@ -64,5 +66,8 @@
         }
       }
     }
+  }
+  .router-link-active{
+    color: #FF4D4D;
   }
 }
