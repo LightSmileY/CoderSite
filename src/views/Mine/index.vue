@@ -65,6 +65,31 @@
           </li>
           </router-link>
         </ul>
+        <ul class="about">
+          <li>
+            <img src="@/assets/icons/index.png" alt="">
+            <div class="title">我的喜欢</div>
+            <van-icon name="arrow" />
+          </li>
+          <li>
+            <img src="@/assets/icons/index.png" alt="">
+            <div class="title">我的收藏</div>
+            <van-icon name="arrow" />
+          </li>
+          <li>
+            <img src="@/assets/icons/index.png" alt="">
+            <div class="title">我的回答</div>
+            <van-icon name="arrow" />
+          </li>
+          <li>
+            <img src="@/assets/icons/index.png" alt="">
+            <div class="title">安全中心</div>
+            <van-icon name="arrow" />
+          </li>
+        </ul>
+        <div class="go-out">
+          <van-button color="#FF9D9D" plain hairline size="large" type="danger">退出登录</van-button>
+        </div>
       </div>
     </van-pull-refresh>
     <tab-bar/>

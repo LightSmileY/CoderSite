@@ -2,16 +2,16 @@
 @import '@/assets/scss/public/mixins';
 
 #mine{
+  height: 100vh;
+  background-color: #F5F5F5;
 
   .container{
     margin-top: 45px;
-    min-height: 100vh;
 
     .banner{
       position: relative;
       width: 100%;
       height: 140px;
-      background-color: #FFE3E3;
 
       .van-image{
         width: 100%;
@@ -31,8 +31,8 @@
     }
 
     .user{
-      margin-top: 32px;
-      padding: 9px 15px 0;
+      padding: 41px 15px 0;
+      background-color: #fff;
 
       &-name{
         font-size: 17px;
@@ -50,7 +50,7 @@
       height: 70px;
       box-sizing: border-box;
       padding: 5px 15px;
-      border-bottom: 1px solid #DCDCDC;
+      background-color: #fff;
       @include flex-center();
 
       a{
@@ -75,6 +75,41 @@
           }
         }
       }
+    }
+    .about{
+      margin-top: 20px;
+      background-color: #fff;
+
+      li{
+        height: 45px;
+        border-bottom: 1px solid $border-extralight;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding: 0 30px;
+
+        .title{
+          flex-grow: 1;
+          font-size: 18px;
+        }
+
+        img{
+          margin: 0 20px 0 0;
+          padding: 0;
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    .go-out{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 0 20px;
+      margin-top: 20px;
     }
   }
 }

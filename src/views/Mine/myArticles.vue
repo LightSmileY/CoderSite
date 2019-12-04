@@ -22,7 +22,7 @@
   export default {
     data(){
       return {
-        loading: false
+        isLoading: false
       }
     },
     components: {

@@ -7,7 +7,7 @@
       @click-left="goBack"
     />
     <div class="container">
-      <!-- <van-cell-group>
+      <van-cell-group>
         <van-field
           v-model="username"
           clearable
@@ -28,7 +28,7 @@
           placeholder="请选择生日"
         />
         <!-- 选择时间 -->
-        <!-- <van-dialog
+        <van-dialog
           v-model="show"
           :close-on-popstate="true"
           :close-on-click-overlay="true"
@@ -54,7 +54,7 @@
           label="个性签名"
           placeholder="请输入个性签名"
         />
-      </van-cell-group> -->
+      </van-cell-group>
     </div>
   </div>
 </template>
