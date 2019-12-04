@@ -76,7 +76,12 @@
     postTime: "",
     labels: [],
     title: "",
-    content: "",
+    content: [
+      {
+        para: String,
+        image: String
+      }
+    ],
     image: "",   			//第一张图片
     likeCount: Number,
     collectCount: Number,
@@ -108,7 +113,12 @@
        postTime: "",
        labels: [""],
        title: "",
-       content: "",
+       content: [
+         {
+           para: String,
+           image: String
+         }
+       ],
        images: [""],
        comments: [{
        	cid: "",
