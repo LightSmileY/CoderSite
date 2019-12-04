@@ -30,12 +30,6 @@
               <template v-slot:error>加载失败</template>
             </van-image>
           </div>
-          <!-- 修改封面图 -->
-          <div class="changeBanner">
-            <van-uploader>
-              <van-button size="small" plain hairline type="primary">上传封面图</van-button>
-            </van-uploader>
-          </div>
         </div>
         <div class="user">
           <div class="user-name">
@@ -72,41 +66,26 @@
           </router-link>
         </ul>
         <ul class="about">
-          <router-link to="/myLikes">
           <li>
-            <van-icon name="like-o" />
+            <img src="@/assets/icons/index.png" alt="">
             <div class="title">我的喜欢</div>
             <van-icon name="arrow" />
           </li>
-          </router-link>
-          <router-link to="/myCollections">
           <li>
-            <van-icon name="star-o" />
+            <img src="@/assets/icons/index.png" alt="">
             <div class="title">我的收藏</div>
             <van-icon name="arrow" />
           </li>
-          </router-link>
-          <router-link to="/myAnswers">
           <li>
-            <van-icon name="comment-circle-o" />
+            <img src="@/assets/icons/index.png" alt="">
             <div class="title">我的回答</div>
             <van-icon name="arrow" />
           </li>
-          </router-link>
-          <router-link to="/safeCenter">
           <li>
-            <van-icon name="warning-o" />
+            <img src="@/assets/icons/index.png" alt="">
             <div class="title">安全中心</div>
             <van-icon name="arrow" />
           </li>
-          </router-link>
-          <router-link to="/personality">
-          <li>
-            <van-icon name="shop-collect-o" />
-            <div class="title">个性化设置</div>
-            <van-icon name="arrow" />
-          </li>
-          </router-link>
         </ul>
         <div class="go-out">
           <van-button color="#FF9D9D" plain hairline size="large" type="danger">退出登录</van-button>
