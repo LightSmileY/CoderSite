@@ -26,7 +26,7 @@
         >
           <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
             <div class="answer-list">
-              <answer-list/>
+              <answer-list me="false"/>
             </div>
           </van-pull-refresh>
         </van-tab>
