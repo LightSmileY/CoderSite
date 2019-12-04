@@ -97,7 +97,7 @@
 
    返回值：
 
-   ```
+   ```javascript
    {
      code: 0,  					//成功为0，失败为-1
      article: {
@@ -142,8 +142,12 @@
      postTime: "",
      labels: [""],
      title: "",
-     content: "",
-     images: [""]
+     content: [
+       {
+         para: String,
+         image: String
+       }
+     ]
    }
    ```
 
@@ -166,7 +170,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "删除成功"
@@ -183,7 +187,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "点赞成功"
@@ -200,7 +204,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "取消点赞
@@ -217,7 +221,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "收藏成功"
@@ -234,7 +238,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "取消收藏"
@@ -249,7 +253,7 @@
 
     参数：
 
-    ```
+    ```javascript
     {
       id: "", 
       uid: "",    //评论者
@@ -261,7 +265,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "评论成功"
@@ -278,7 +282,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "删除成功"
@@ -386,7 +390,7 @@
 
    返回值：
 
-   ```
+   ```javascript
    {
      code: 0,  					//成功为0，失败为-1
      question: {
@@ -400,7 +404,7 @@
        content: "",
        images: [""],
        answers: [{
-       	cid: "",
+       	aid: "",
        	uid: "",
        	avatar: "",
        	nickname: "",
@@ -426,7 +430,7 @@
 
    ```javascript
    {
-     aid: "",
+     qid: "",
      uid: "",
      postTime: "",
      labels: [""],
@@ -438,7 +442,7 @@
 
    返回值: 
 
-   ```
+   ```javascript
    {
      code: 0,
      message: "发表成功"
@@ -455,7 +459,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "删除成功"
@@ -472,7 +476,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "点赞成功"
@@ -489,7 +493,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "取消点赞"
@@ -508,7 +512,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "收藏成功"
@@ -527,7 +531,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "取消收藏"
@@ -544,9 +548,9 @@
 
     参数：
 
-    ```
+    ```javascript
     {
-      id: "", 
+      aid: "", 
       qid: "", 
       uid: "",
       objUid: "",
@@ -556,7 +560,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "回答成功"
@@ -573,7 +577,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "删除成功"
@@ -594,7 +598,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
     	code: 0,
     	userInfo: {
@@ -617,7 +621,7 @@
 
     参数：
 
-    ```
+    ```javascript
     {
     	userId: "",
     	nickname: "",
@@ -631,7 +635,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "修改成功"
@@ -648,7 +652,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       attents: {
@@ -670,7 +674,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       attents: {
@@ -691,7 +695,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "关注成功"
@@ -708,7 +712,7 @@
 
     返回值：
 
-    ```
+    ```javascript
     {
       code: 0,
       message: "取消关注"
