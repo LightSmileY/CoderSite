@@ -1,7 +1,7 @@
 <template>
   <div id="articleDetail">
     <van-nav-bar
-      fixed="true"
+      fixed
       left-arrow
       @click-left="goBack"
       title="问题"/>
@@ -42,6 +42,7 @@
               size="mini">+关注</van-button>
             </div>
           </div>
+          <div class="title">#嘻嘻嘻嘻嘻#</div>
           <ul class="content">
             <li v-for="item in 1">
               <p>哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或哈哈哈哈哈哈</p>
@@ -55,19 +56,19 @@
             <ul>
               <li>
                 <div class="icon">
-                  <img src="@/assets/icons/index.png" alt="">
+                  <van-icon name="like-o" />
                 </div>
                 <div class="label">234</div>
               </li>
               <li>
                 <div class="icon">
-                  <img src="@/assets/icons/index.png" alt="">
+                  <van-icon name="star-o" />
                 </div>
                 <div class="label">128</div>
               </li>
               <li>
-                <div class="icon">
-                  <img src="@/assets/icons/index.png" alt="">
+                <div class="icon" @click="showPostBox = true">
+                  <van-icon name="chat-o" />
                 </div>
                 <div class="label">175</div>
               </li>
@@ -78,6 +79,24 @@
         </van-pull-refresh>
       </div>
     </div>
+    <!-- 评论、回复框 -->
+    <van-overlay :show="showPostBox" @click="showPostBox = false">
+      <div class="wrapper" @click.stop>
+        <div class="postMessage">
+          <van-field
+            v-model="sms"
+            center
+            rows="1"
+            autosize
+            autofocus
+            type="textarea"
+            placeholder="请输入···"
+          >
+            <van-button slot="button" size="small" type="primary">发送</van-button>
+          </van-field>
+        </div>
+      </div>
+    </van-overlay>
   </div>
 </template>
 
@@ -88,7 +107,8 @@
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        showPostBox: false
       }
     },
     components: {

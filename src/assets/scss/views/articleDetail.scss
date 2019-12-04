@@ -59,6 +59,12 @@
         }
       }
 
+      .title{
+        font-size: 15px;
+        color: #3154D0;
+        margin: 10px 0 0;
+      }
+
       .content{
         width: 100%;
 
@@ -72,11 +78,15 @@
             width: 100%
           }
         }
+
+        p:first-child{
+          margin: 5px 0 10px;
+        }
       }
 
       .operinfo{
         width: 100%;
-        margin-top: 15px;
+        margin-top: 10px;
         @include flex-jus-end();
 
         ul{
@@ -88,19 +98,24 @@
             
             .icon{
               @include flex-center();
-
-              img{
-                width: 20px;
+              
+              .van-icon{
+                font-size: 23px;
               }
             }
             .label{
               font-size: 14px;
-              margin-left: 5px;
+              margin-left: 3px;
               // color: $regular-text;
             }
           }
         }
       }
     }
+  }
+  .postMessage{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
   }
 }
