@@ -23,6 +23,7 @@
       margin-top: 10px;
     }
 
+    .new,
     .hot,
     .youlike{ /* 猜你喜欢、热门帖子 */
       margin-top: 5px;
@@ -30,6 +31,13 @@
       .title{
         font-weight: bold;
         line-height: 30px;
+      }
+
+      .more{
+        text-align: center;
+        font-size: 14px;
+        color: #1248BB;
+        line-height: 40px;
       }
     }
   }

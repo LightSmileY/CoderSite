@@ -13,7 +13,7 @@
           <template v-slot:error>加载失败</template>
         </van-image>
       </div>
-      <div class="label">功能{{item}}</div>
+      <div class="label">扩展{{item}}</div>
     </li>
   </ul>
 </template>

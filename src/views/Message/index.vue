@@ -1,7 +1,7 @@
 <template>
   <div id="message">
     <van-nav-bar
-      fixed="true"
+      fixed
       z-index="1000"
       title="消息"
     />

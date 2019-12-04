@@ -1,7 +1,7 @@
 <template>
   <div id="mine">
     <van-nav-bar
-      fixed="true"
+      fixed
       title="我的"
       right-text="资料"
       @click-right="viewProfile"/>

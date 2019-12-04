@@ -1,6 +1,11 @@
 <template>
   <div id="safeCenter">
-    
+    <van-nav-bar
+      fixed
+      title="安全中心"
+      left-arrow
+      @click-left="goBack"
+    />
   </div>
 </template>
 

@@ -1,6 +1,11 @@
 <template>
   <div id="personality">
-    
+    <van-nav-bar
+      fixed
+      title="个性化配置"
+      left-arrow
+      @click-left="goBack"
+    />
   </div>
 </template>
 

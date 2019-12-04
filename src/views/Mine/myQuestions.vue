@@ -1,7 +1,7 @@
 <template>
   <div id="myQuestions">
     <van-nav-bar
-      fixed="true"
+      fixed
       left-arrow
       @click-left="goBack"
       title="我的问题"/>

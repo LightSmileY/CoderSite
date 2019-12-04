@@ -1,7 +1,7 @@
 <template>
   <div id="pubQuestion">
     <van-nav-bar
-      fixed="true"
+      fixed
       z-index="1000"
       title="发表问题"
       left-arrow

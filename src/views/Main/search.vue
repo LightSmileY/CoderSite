@@ -35,7 +35,7 @@
         <div class="hotSearchList">
           <ul>
             <li v-for="item in 10">
-              {{item}}<!-- . 热门框架Vue开发Web APP -->
+              {{item}}. 热门框架Vue开发Web APP
             </li>
           </ul>
         </div>

@@ -24,8 +24,8 @@
         </div>
       </div>
       <div class="attent">
-        <van-button v-if="false" type="primary" color="#47CE8E" size="mini">已关注</van-button>
-        <van-button type="primary" color="#47CE8E" size="mini">关注TA</van-button>
+        <van-button v-if="attent" type="primary" color="#47CE8E" size="mini">已关注</van-button>
+        <van-button v-if="fans" type="primary" color="#47CE8E" size="mini">关注TA</van-button>
       </div>
     </li>
   </ul>
@@ -39,7 +39,8 @@
       }
     },
     props: {
-      
+      attent: String,
+      fans: String
     },
     methods: {
       // 去文章详情页

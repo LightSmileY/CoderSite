@@ -62,12 +62,25 @@
       box-sizing: border-box;
       padding: 4px 10px;
       border-radius: $border-big;
-      box-shadow: $light-shadow;
+      box-shadow: 0 0 2px #C4C4C4;
 
       ul{
         li{
           line-height: 30px;
           color: $primary-text;
+          font-size: 15px;
+        }
+        li:nth-child(1){
+          color: red;
+        }
+        li:nth-child(2){
+          color: #FF8080;
+        }
+        li:nth-child(3){
+          color: #FFB0B0;
+        }
+        li:hover{
+          color: red;
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div id="myFanses">
     <van-nav-bar
-      fixed="true"
+      fixed
       left-arrow
       @click-left="goBack"
       title="我的粉丝"/>
@@ -9,7 +9,7 @@
       <div class="articles">
         <!-- 下拉刷新 -->
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          <user-list/>
+          <user-list fans="true"/>
         </van-pull-refresh>
       </div>
     </div>

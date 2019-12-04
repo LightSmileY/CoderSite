@@ -1,7 +1,7 @@
 <template>
   <div id="myAttents">
     <van-nav-bar
-      fixed="true"
+      fixed
       left-arrow
       @click-left="goBack"
       title="我的关注"/>
@@ -9,7 +9,7 @@
       <div class="users">
         <!-- 下拉刷新 -->
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          <user-list/>
+          <user-list attent="true"/>
         </van-pull-refresh>
       </div>
     </div>

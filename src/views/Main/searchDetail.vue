@@ -19,7 +19,7 @@
     <div class="navs">
       <ul>
         <li>
-          <div class="label">推荐</div>
+          <div class="label">综合</div>
           <van-icon name="arrow-down" />
         </li>
         <li>

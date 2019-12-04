@@ -1,7 +1,7 @@
 <template>
   <div id="myCollections">
     <van-nav-bar
-      fixed="true"
+      fixed
       left-arrow
       @click-left="goBack"
       title="我的收藏"/>

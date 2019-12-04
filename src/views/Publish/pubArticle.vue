@@ -1,7 +1,7 @@
 <template>
   <div id="pubArticle">
     <van-nav-bar
-      fixed="true"
+      fixed
       z-index="1000"
       title="发表文章"
       left-arrow

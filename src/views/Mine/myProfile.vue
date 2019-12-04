@@ -1,7 +1,7 @@
 <template>
   <div id="myProfile">
     <van-nav-bar
-      fixed="true"
+      fixed
       title="资料"
       left-arrow
       @click-left="goBack"
@@ -9,22 +9,23 @@
     <div class="container">
       <van-cell-group>
         <van-field
-          v-model="username"
+          v-model="lightsmiley"
           clearable
           label="用户名"
           placeholder="lightsmiley"
           disabled
         />
         <van-field
-          v-model="password"
-          type="password"
+          v-model="userInfo.nickname"
           label="昵称"
           placeholder="请输入昵称"
         />
         <van-field
-          v-model="username"
+          v-model="userInfo.birthday"
           clearable
           label="生日"
+          right-icon="underway-o"
+          @click="showDataPicer"
           placeholder="请选择生日"
         />
         <!-- 选择时间 -->
@@ -34,7 +35,7 @@
           :close-on-click-overlay="true"
         >
           <van-datetime-picker
-            v-model="currentDate"
+            v-model="userInfo.birthday"
             type="date"
             :min-date="minDate"
             :show-toolbar="false"
@@ -43,13 +44,12 @@
         </van-dialog>
         
         <van-field
-          v-model="password"
-          type="password"
+          v-model="userInfo.email"
           label="邮箱"
           placeholder="请输入邮箱"
         />
         <van-field
-          v-model="username"
+          v-model="signiture"
           clearable
           label="个性签名"
           placeholder="请输入个性签名"
@@ -64,13 +64,23 @@
   export default {
     data(){
       return {
-        show: true
+        show: false,
+        userInfo: {
+          username: '',
+          nickname: '',
+          birthday: '',
+          email: '',
+          signiture: ''
+        }
       }
     },
     methods: {
       goBack(){
         this.$router.go(-1)
       },
+      showDataPicer(){
+        this.show = true
+      }
     }
   };
 </script>

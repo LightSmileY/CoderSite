@@ -3,13 +3,13 @@
     <!-- 发现页头部 -->
     <div class="header">
       <div class="navs">
-        <li>推荐</li>
-        <li class="li-active">关注</li>
-        <li>最新</li>
-        <li>热门</li>
-        <li>问题</li>
+        <li :class="{'li-active': active === 1}" @click="changeList(1)">最新</li>
+        <li :class="{'li-active': active === 2}" @click="changeList(2)">热门</li>
+        <li :class="{'li-active': active === 3}" @click="changeList(3)">推荐</li>
+        <li :class="{'li-active': active === 4}" @click="changeList(4)">关注</li>
+        <li :class="{'li-active': active === 5}" @click="changeList(5)">问题</li>
       </div>
-      <div class="search">
+      <div class="search" @click="toSearchPage">
         <van-icon name="search" size="25px"/>
       </div>
     </div>
@@ -31,7 +31,8 @@
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        active: 1
       }
     },
     components: {
@@ -44,6 +45,14 @@
           this.$toast('刷新成功')
           this.isLoading = false
         }, 500)
+      },
+      changeList(i){
+        this.active = i
+      },
+      toSearchPage(){
+        this.$router.push({
+          name: 'search'
+        })
       }
     }
   };

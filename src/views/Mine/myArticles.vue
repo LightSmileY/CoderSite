@@ -1,7 +1,7 @@
 <template>
   <div id="myArticles">
     <van-nav-bar
-      fixed="true"
+      fixed
       left-arrow
       @click-left="goBack"
       title="我的文章"/>

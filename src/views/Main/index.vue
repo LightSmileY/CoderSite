@@ -12,13 +12,20 @@
       <div class="extends">
         <Extends/>
       </div>
-      <div class="hot">
-        <div class="title">猜你喜欢</div>
+      <div class="new">
+        <div class="title">最新问题</div>
         <post-list/>
+        <div class="more">加载更多···</div>
       </div>
       <div class="youlike">
+        <div class="title">猜你喜欢</div>
+        <post-list/>
+        <div class="more">加载更多···</div>
+      </div>
+      <div class="hot">
         <div class="title">热门文章</div>
         <post-list/>
+        <div class="more">加载更多···</div>
       </div>
     </van-pull-refresh>
     <tab-bar/>
