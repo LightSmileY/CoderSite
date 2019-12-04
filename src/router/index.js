@@ -8,7 +8,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/main',
       name: 'main',
       component: () => import('@/views/Main')
     },
@@ -101,6 +101,10 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: () => import('@/views/Register')
+    },
+    {
+      path: '*',
+      redirect: '/main'
     }
   ]
 })
