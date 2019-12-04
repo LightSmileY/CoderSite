@@ -9,7 +9,7 @@
       <div class="articles">
         <!-- 下拉刷新 -->
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          
+          <user-list/>
         </van-pull-refresh>
       </div>
     </div>
@@ -17,12 +17,16 @@
 </template>
 
 <script>
+  import UserList from '@/components/userList'
 
   export default {
     data(){
       return {
-        loading: false
+        isLoading: false
       }
+    },
+    components: {
+      UserList
     },
     methods: {
       goBack(){
