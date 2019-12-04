@@ -76,13 +76,10 @@
     postTime: "",
     labels: [],
     title: "",
-    content: [
-      {
-        para: String,
-        image: String
-      }
-    ],
-    image: "",   			//第一张图片
+    content: {				//只要第一段
+      para: String,
+      image: String
+    },
     likeCount: Number,
     collectCount: Number,
     commentCount: Number
@@ -119,7 +116,6 @@
            image: String
          }
        ],
-       images: [""],
        comments: [{
        	cid: "",
        	uid: "",
