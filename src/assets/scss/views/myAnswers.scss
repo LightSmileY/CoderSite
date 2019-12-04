@@ -1,0 +1,11 @@
+@import '@/assets/scss/public/variables';
+@import '@/assets/scss/public/mixins';
+
+#myAnswers{
+  @include flex-center();
+
+  .container{
+    margin-top: 45px;
+    width: 92%;
+  }
+}
