@@ -34,8 +34,11 @@
           size="mini">+关注</van-button>
         </div>
       </div>
-      <div class="message-type">
-        回答了你的问题
+      <div class="message-type" v-if="me">
+        回答了我的问题
+      </div>
+      <div class="message-type" v-if="!me">
+        我回答了<span>Hicker</span>的问题
       </div>
       <div class="answer-content">
         嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻
@@ -69,7 +72,7 @@
       }
     },
     props: {
-      
+      me: Boolean
     }
   };
 </script>
