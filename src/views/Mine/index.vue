@@ -12,7 +12,7 @@
           <van-image
             lazy-load
             fit="cover"
-            src="http://cdn.fengblog.xyz/makeup.jpg">
+            src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg">
             <template v-slot:loading>
               <van-loading type="spinner" size="20" />
             </template>

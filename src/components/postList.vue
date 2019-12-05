@@ -7,7 +7,7 @@
         <van-image
           lazy-load
           fit="cover"
-          src="http://cdn.fengblog.xyz/makeup.jpg">
+          src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg">
           <template v-slot:loading>
             <van-loading type="spinner" size="20" />
           </template>
@@ -21,19 +21,19 @@
         <ul class="operinfo">
           <li class="operinfo-item">
             <div class="icon">
-              <img src="@/assets/icons/index.png" alt="">
+              <van-icon name="like-o" />
             </div>
             <div class="label">234</div>
           </li>
           <li class="operinfo-item">
             <div class="icon">
-              <img src="@/assets/icons/index.png" alt="">
+              <van-icon name="star-o" />
             </div>
             <div class="label">335</div>
           </li>
           <li class="operinfo-item">
             <div class="icon">
-              <img src="@/assets/icons/index.png" alt="">
+              <van-icon name="chat-o" />
             </div>
             <div class="label">124</div>
           </li>

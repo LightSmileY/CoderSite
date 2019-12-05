@@ -1,8 +1,8 @@
 <template>
   <ul id="userList">
-    <li v-for="item in 15" @click="toUserProfile(123)">
+    <li v-for="item in 15">
       <div class="infos">
-        <div class="avatar">
+        <div class="avatar" @click="toUserProfile(123)">
           <!-- van图片 -->
           <van-image
             lazy-load
@@ -26,6 +26,7 @@
       <div class="attent">
         <van-button v-if="attent" type="primary" color="#47CE8E" size="mini">已关注</van-button>
         <van-button v-if="fans" type="primary" color="#47CE8E" size="mini">关注TA</van-button>
+        <van-button v-if="answer" type="primary" color="#47CE8E" size="mini">请TA回答</van-button>
       </div>
     </li>
   </ul>
@@ -40,7 +41,8 @@
     },
     props: {
       attent: String,
-      fans: String
+      fans: String,
+      answer: String
     },
     methods: {
       // 去文章详情页

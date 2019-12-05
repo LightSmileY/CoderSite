@@ -6,7 +6,7 @@
         <van-image
           lazy-load
           fit="cover"
-          src="http://cdn.fengblog.xyz/logo.png">
+          src="http://cdn.fengblog.xyz/d993d003d35738a239941882b80f8f83.jpg">
           <template v-slot:loading>
             <van-loading type="spinner" size="20" />
           </template>

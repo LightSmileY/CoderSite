@@ -20,7 +20,7 @@
       <!-- 段落 -->
       <div class="para" v-for="item in 1">
         <van-field
-          v-model="message"
+          v-model="message1"
           rows="1"
           autosize
           :label="'段落'+para"
@@ -51,6 +51,7 @@
     data(){
       return {
         message: "",
+        message1: "",
         para: 1,
         imageList: []
       }

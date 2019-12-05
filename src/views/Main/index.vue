@@ -42,9 +42,10 @@
     data(){
       return {
         images: [
-          "http://tva1.sinaimg.cn/large/0060lm7Tly1g64rb3s5djj32f80rs7gw.jpg",
-          "http://tva1.sinaimg.cn/large/0060lm7Tly1g64rb3s5djj32f80rs7gw.jpg",
-          "http://tva1.sinaimg.cn/large/0060lm7Tly1g64rb3s5djj32f80rs7gw.jpg"
+          "http://cdn.fengblog.xyz/banner1.png",
+          "http://cdn.fengblog.xyz/banner2.jpg",
+          "http://cdn.fengblog.xyz/banner3.png",
+          "http://cdn.fengblog.xyz/banner4.png"
         ],
         isLoading: false
       }

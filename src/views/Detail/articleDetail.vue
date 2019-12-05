@@ -47,7 +47,7 @@
             <li v-for="item in 1">
               <p>哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或哈哈哈哈哈哈</p>
               <div class="image">
-                <img src="http://cdn.fengblog.xyz/makeup.jpg" alt="">
+                <img src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg" alt="">
               </div>
             </li>
           </ul>

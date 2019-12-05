@@ -20,7 +20,7 @@
       <!-- 段落 -->
       <div class="para" v-for="item in 1">
         <van-field
-          v-model="message"
+          v-model="message1"
           rows="1"
           autosize
           label="内容"
@@ -37,7 +37,7 @@
       </div>
       <!-- 发表帖子 -->
       <div class="post">
-        <van-button type="primary" size="large">发表</van-button>
+        <van-button type="primary" size="large" @click="toSuccessPage">发表</van-button>
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@
     data(){
       return {
         message: "",
+        message1: "",
         para: 1,
         imageList: []
       }
@@ -56,6 +57,11 @@
     methods: {
       goback(){
         this.$router.go(-1)
+      },
+      toSuccessPage(){
+        this.$router.push({
+          name: 'questionPublishSuccess'
+        })
       }
     }
   };
