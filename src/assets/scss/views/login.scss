@@ -1,2 +1,17 @@
 @import '@/assets/scss/public/variables';
 @import '@/assets/scss/public/mixins';
+
+#login{
+  width: 100%;
+  @include flex-center(column);
+
+  .container{
+    width: 100%;
+
+    .btn{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 20px;
+    }
+  }
+}
