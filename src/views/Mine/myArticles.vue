@@ -18,11 +18,13 @@
 
 <script>
   import ArticleList from '@/components/articleList'
+  import {getArticlesByUserId} from '@/api/article'
 
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        articleList: []
       }
     },
     components: {
@@ -33,11 +35,22 @@
         this.$router.go(-1)
       },
       onRefresh() {
-        setTimeout(() => {
+        getArticlesByUserId({
+
+        })
+        .then(res => {
           this.$toast('刷新成功')
           this.isLoading = false
-        }, 500)
+        })
       }
+    },
+    created(){
+      getArticlesByUserId({
+
+      })
+      .then(res => {
+
+      })
     }
   };
 </script>

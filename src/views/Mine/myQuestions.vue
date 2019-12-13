@@ -18,11 +18,13 @@
 
 <script>
   import ArticleList from '@/components/articleList'
+  import {getQuestionsByUserId} from '@/api/question'
 
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        questionList: []
       }
     },
     components: {
@@ -33,11 +35,22 @@
         this.$router.go(-1)
       },
       onRefresh() {
-        setTimeout(() => {
+        getQuestionsByUserId({
+
+        })
+        .then(res => {
           this.$toast('刷新成功')
           this.isLoading = false
-        }, 500)
+        })
       }
+    },
+    created(){
+      getQuestionsByUserId({
+          
+      })
+      .then(res => {
+
+      })
     }
   };
 </script>

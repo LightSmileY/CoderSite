@@ -14,17 +14,17 @@
       </div>
       <div class="new">
         <div class="title">最新问题</div>
-        <post-list/>
+          <post-list/>
         <div class="more">加载更多···</div>
       </div>
       <div class="youlike">
         <div class="title">猜你喜欢</div>
-        <post-list/>
+          <post-list/>
         <div class="more">加载更多···</div>
       </div>
       <div class="hot">
         <div class="title">热门文章</div>
-        <post-list/>
+          <post-list/>
         <div class="more">加载更多···</div>
       </div>
     </van-pull-refresh>
@@ -37,6 +37,8 @@
   import SearchBar from '@/components/searchbar'
   import Extends from '@/components/extends'
   import PostList from '@/components/postList'
+  import {getHotArticles, getRecommendArticles} from '@/api/article'
+  import {getNewQuestions} from '@/api/question'
 
   export default {
     data(){
@@ -68,34 +70,48 @@
           this.isLoading = false
         }, 500)
       },
-      init: function () {
-       if(typeof(WebSocket) === "undefined"){
-         alert("您的浏览器不支持socket")
-           }else{
-             this.socket = new WebSocket(this.path) // 实例化socket
-             this.socket.onopen = this.open // 监听socket连接
-             this.socket.onerror = this.error // 监听socket错误信息
-             this.socket.onmessage = this.getMessage // 监听socket消息
-             }
-        },
-      open: function () {
-        console.log("socket连接成功")
+      //获取该页面所有数据
+      getData(){
+        this.getNew()
+        this.getYouLike()
+        this.getHot()
       },
-      error: function () {
-         console.log("连接错误")
+      //获取最新问题
+      getNew(){
+        getNewQuestions()
+        .then(res => {
+
+        })
       },
-      getMessage: function (msg) {
-         console.log(msg.data)
+      //获取猜你喜欢
+      getYouLike(){
+        getRecommendArticles()
+        .then(res => {
+          
+        })
       },
-      send: function () {
-        this.socket.send(params)
+      //获取热门文章
+      getHot(){
+        getHotArticles()
+        .then(res => {
+          
+        })
       },
-      close: function () {
-        console.log("socket已经关闭")
+      // 加载更多最新问题
+      loadMoreNewQuestions(){
+        this.getNew()
+      },
+      // 加载更多猜你喜欢
+      loadMoreYouLikeArticles(){
+        this.getYouLike()
+      },
+      // 加载更热门文章
+      loadMoreHotArticles(){
+        this.getHot()
       }
     },
-    destroyed () {  // 销毁监听
-      this.socket.onclose = this.close
+    created(){
+      this.getData() //获取该页面所有数据
     }
   };
 </script>

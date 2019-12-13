@@ -35,11 +35,22 @@
         this.$router.go(-1)
       },
       onRefresh() {
-        setTimeout(() => {
-          this.$toast('刷新成功')
-          this.isLoading = false
-        }, 500)
+        // getQuestionsByUserId({
+
+        // })
+        // .then(res => {
+        //   this.$toast('刷新成功')
+        //   this.isLoading = false
+        // })
       }
+    },
+    created(){
+      // getQuestionsByUserId({
+          
+      // })
+      // .then(res => {
+
+      // })
     }
   };
 </script>

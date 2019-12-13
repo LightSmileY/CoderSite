@@ -18,11 +18,13 @@
 
 <script>
   import UserList from '@/components/userList'
+  import {getAttentList} from '@/api/user'
 
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        userList: []
       }
     },
     components: {
@@ -33,11 +35,22 @@
         this.$router.go(-1)
       },
       onRefresh() {
-        setTimeout(() => {
+        getAttentList({
+
+        })
+        .then(res => {
           this.$toast('刷新成功')
           this.isLoading = false
-        }, 500)
+        })
       }
+    },
+    created(){
+      getAttentList({
+
+      })
+      .then(res => {
+
+      })
     }
   };
 </script>

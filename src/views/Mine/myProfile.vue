@@ -60,18 +60,14 @@
 </template>
 
 <script>
+  import AnswerList from '@/components/answerList'
+  import {getUserInfo, updateUserInfo} from '@/api/article'
 
   export default {
     data(){
       return {
         show: false,
-        userInfo: {
-          username: '',
-          nickname: '',
-          birthday: '',
-          email: '',
-          signiture: ''
-        }
+        userInfo: {}
       }
     },
     methods: {
@@ -80,7 +76,21 @@
       },
       showDataPicer(){
         this.show = true
+      },
+      updateUser(){
+        updateUserInfo(this.userInfo)
+        .then(res => {
+          
+        })
       }
+    },
+    created(){
+      getUserInfo({
+          
+      })
+      .then(res => {
+
+      })
     }
   };
 </script>
