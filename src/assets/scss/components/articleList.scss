@@ -8,15 +8,14 @@
   margin: 10px 2%;
 
   li{
-    width: 46%;
-    margin: 7px 0;
-    border: 1px solid $border-base;
+    margin: 0 5px 10px;
+    padding-bottom: 1px;
     border-radius: $border-small;
+    border: 1px solid $border-lighter;
+    background-color: #fff;
 
     .image{
       width: 100%;
-      height: 100px;
-      background-color: #FFDDDD;
 
       .van-image{
         width: 100%;
