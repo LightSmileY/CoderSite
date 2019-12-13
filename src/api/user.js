@@ -1,14 +1,14 @@
 import axios from 'axios'
-import {serverUrl} from '../utils/env.js'
+import {serverUrl} from '@/config/utils.js'
 
-axios.defaults.baseURL = 'serverUrl' + '/CoderSite/user/'
+axios.defaults.baseURL = serverUrl + '/CoderSite/user/'
 
 /*注册*/
-export const login = data => {
+export const login = params => {
   return axios({
     url: 'login',
     method: 'post',
-    data
+    params
   })
 }
 
