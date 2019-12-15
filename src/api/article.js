@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {serverUrl} from '../utils/env.js'
+import {serverUrl} from '@/config/utils.js'
 
-axios.defaults.baseURL = 'serverUrl' + '/CoderSite/article/'
+axios.defaults.baseURL = serverUrl + '/CoderSite/article/'
 
 /*获取10个最新文章*/
 export const getNewArticles = params => {
@@ -58,7 +58,7 @@ export const getArticlesByKeywords = params => {
 }
 
 /* 通过用户id搜索该用户发表的10个文章*/
-export const getArticlesByKeywords = params => {
+export const getArticlesByUserId = params => {
   return axios({
     url: 'getArticlesByKeywords',
     method: 'get',
@@ -94,7 +94,7 @@ export const addArticle = data => {
 }
 
 /*删除一篇文章*/
-export const addArticle = params => {
+export const deleteArticle = params => {
   return axios({
     url: 'addArticle',
     method: 'delete',
@@ -147,9 +147,9 @@ export const commentArticle = data => {
   })
 }
 
-export const uncollectArticle = params => {
+export const deleteComment = params => {
   return axios({
-    url: 'uncollectArticle',
+    url: 'deleteComment',
     method: 'delete',
     params
   })

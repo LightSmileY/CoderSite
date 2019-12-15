@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {serverUrl} from '../utils/env.js'
+import {serverUrl} from '@/config/utils.js'
 
-axios.defaults.baseURL = 'serverUrl' + '/CoderSite/question/'
+axios.defaults.baseURL = serverUrl + '/CoderSite/question/'
 
 /*获取10个最新问题*/
 export const getNewQuestions = params => {
@@ -131,7 +131,7 @@ export const collectQuestion = data => {
 
 /*取消收藏*/
 export const uncollectQuestion = params => {
-  return axios({uncollectQuestion
+  return axios({
     url: 'uncollectQuestion',
     method: 'delete',
     params
