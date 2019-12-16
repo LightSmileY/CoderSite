@@ -22,9 +22,9 @@ export const register = data => {
 }
 
 /*获取用户资料*/
-export const getUserInfo = params => {
+export const getUserById = params => {
   return axios({
-    url: 'getUserInfo',
+    url: 'getUserById',
     method: 'get',
     params
   })
@@ -40,27 +40,27 @@ export const updateUserInfo = data => {
 }
 
 /*获取某用户的所有粉丝*/
-export const getFansList = params => {
+export const getAllFans = params => {
   return axios({
-    url: 'getFansList',
+    url: 'getAllFans',
     method: 'get',
     params
   })
 }
 
 /*获取用户的所有关注*/
-export const getAttentList = params => {
+export const getAllFollows = params => {
   return axios({
-    url: 'getAttentList',
+    url: 'getAllFollows',
     method: 'get',
     params
   })
 }
 
 /*关注用户*/
-export const attentUser = data => {
+export const addFollow = data => {
   return axios({
-    url: 'attentUser',
+    url: 'addFollow',
     method: 'post',
     data
   })

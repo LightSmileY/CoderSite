@@ -2,7 +2,7 @@
   <ul id="articleList">
     <waterfall :col='2' :gutterWidth="gutterWidth">
       <template>
-         <li v-for="item in 12" @click="toQuestionDetailPage(123)">
+         <li v-for="item in 12" @click="toArticleDetailPage(i)">
           <div class="image">
             <!-- van图片 -->
             <van-image
@@ -59,11 +59,13 @@
       
     },
     methods: {
-      // 去文章详情页
-      toQuestionDetailPage(i){
+      /*查看文章详情*/
+      toArticleDetailPage(i){
         this.$router.push({
-          name:'questionDetail',
-          query: { id: i }
+          name: 'articleDetail',
+          query: {
+            id: i
+          }
         })
       }
     }
