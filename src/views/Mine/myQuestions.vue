@@ -9,7 +9,7 @@
       <div class="articles">
         <!-- 下拉刷新 -->
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          <article-list/>
+          <article-list :arrayList="questionList"/>
         </van-pull-refresh>
       </div>
     </div>

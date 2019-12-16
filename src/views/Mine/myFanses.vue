@@ -9,8 +9,15 @@
       <div class="articles">
         <!-- 下拉刷新 -->
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          <user-list fans="true"/>
+          <user-list fans="true" :arrayList="userList"/>
         </van-pull-refresh>
+        <!-- 加载 -->
+        <div 
+        class="loading" 
+        style="display:flex;justify-content:center;align-items: center;height:90vh;"
+        v-if="loading">
+          <van-loading color="#1989fa" size="40px" vertical>玩命加载中...</van-loading>
+        </div>
       </div>
     </div>
   </div>
@@ -18,12 +25,13 @@
 
 <script>
   import UserList from '@/components/userList'
-  import {getFansList} from '@/api/user'
+  import {getAllFans} from '@/api/user'
 
   export default {
     data(){
       return {
         isLoading: false,
+        loading: true,
         userList: []
       }
     },
@@ -42,15 +50,18 @@
           this.$toast('刷新成功')
           this.isLoading = false
         })
+      },
+      getFansList(){
+        getAllFans({uid: 'lightsmiley'})
+        .then(res => {
+          console.log(res)
+          this.userList = res.data.attents
+          this.loading = false
+        })
       }
     },
     created(){
-      getFansList({
-
-      })
-      .then(res => {
-
-      })
+      this.getFansList()
     }
   };
 </script>

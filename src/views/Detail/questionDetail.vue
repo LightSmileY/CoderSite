@@ -16,7 +16,7 @@
                 <van-image
                   lazy-load
                   fit="cover"
-                  src="http://cdn.fengblog.xyz/avatar.jpg">
+                  :src="questionInfo.avatar">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
                   </template>
@@ -25,10 +25,10 @@
               </div>
               <div class="name-time">
                 <div class="name">
-                  浅笑半离兮
+                  {{questionInfo.userNickname}}
                 </div>
                 <div class="time">
-                  2019-11-23 21:56:30
+                  {{questionInfo.postTime}}
                 </div>
               </div>
             </div>
@@ -42,12 +42,17 @@
               size="mini">+关注</van-button>
             </div>
           </div>
-          <div class="title">#嘻嘻嘻嘻嘻#</div>
+          <div class="title">#{{questionInfo.title}}#</div>
+          <div class="labels">
+            <span class="tag-box" v-for="item in questionInfo.labels">
+              <van-tag color="#f2826a" plain>{{item}}</van-tag>
+            </span>
+          </div>
           <ul class="content">
-            <li v-for="item in 1">
-              <p>哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或哈哈哈哈哈哈</p>
-              <div class="image">
-                <img src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg" alt="">
+            <li>
+              <p>{{questionInfo.content}}</p>
+              <div class="image" v-for="item in questionInfo.images">
+                <img :src="item" alt="">
               </div>
             </li>
           </ul>
@@ -58,24 +63,24 @@
                 <div class="icon">
                   <van-icon name="like-o" />
                 </div>
-                <div class="label">234</div>
+                <div class="label">{{questionInfo.likeCount}}</div>
               </li>
               <li>
                 <div class="icon">
                   <van-icon name="star-o" />
                 </div>
-                <div class="label">128</div>
+                <div class="label">{{questionInfo.collectCount}}</div>
               </li>
               <li>
                 <div class="icon" @click="showPostBox = true">
                   <van-icon name="chat-o" />
                 </div>
-                <div class="label">175</div>
+                <div class="label">{{questionInfo.answerCount}}</div>
               </li>
             </ul>
           </div>
           <van-divider content-position="left">回答</van-divider>
-          <comment-list/>
+          <comment-list :arrayList="questionInfo.answers"/>
         </van-pull-refresh>
       </div>
     </div>
@@ -103,12 +108,15 @@
 <script>
   import TabBar from '@/components/tabbar'
   import CommentList from '@/components/commentList'
+  import {getTime} from '@/assets/js/pubfuncs'
+  import {getQuestionById} from '@/api/question'
 
   export default {
     data(){
       return {
         isLoading: false,
-        showPostBox: false
+        showPostBox: false,
+        questionInfo: {}
       }
     },
     components: {
@@ -124,7 +132,17 @@
           this.$toast('刷新成功')
           this.isLoading = false
         }, 500)
+      },
+      getQuestion(){
+        getQuestionById({qid: this.$route.query.id})
+        .then(res => {
+          console.log(res)
+          this.questionInfo = res.data.question
+        })
       }
+    },
+    created(){
+      this.getQuestion()
     }
   };
 </script>

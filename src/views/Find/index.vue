@@ -14,9 +14,34 @@
       </div>
     </div>
     <div class="container">
-      <div class="articleList">
+      <!-- 最新 -->
+      <div class="articleList" v-if="active === 1">
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          <article-list/>
+          <article-list :arrayList="dataList.newArticles"/>
+        </van-pull-refresh>
+      </div>
+      <div class="articleList" v-if="active === 2">
+      <!-- 热门 -->
+        <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+          <article-list :arrayList="dataList.hotArticles"/>
+        </van-pull-refresh>
+      </div>
+      <div class="articleList" v-if="active === 3">
+      <!-- 推荐 -->
+        <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+          <article-list :arrayList="dataList.recommendArticles"/>
+        </van-pull-refresh>
+      </div>
+      <div class="articleList" v-if="active === 4">
+      <!-- 关注 -->
+        <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+          <article-list :arrayList="dataList.followsArticles"/>
+        </van-pull-refresh>
+      </div>
+      <div class="articleList" v-if="active === 5">
+      <!-- 问题 -->
+        <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+          <question-list :arrayList="dataList.newQuestions"/>
         </van-pull-refresh>
       </div>
     </div>
@@ -27,19 +52,49 @@
 <script>
   import TabBar from '@/components/tabbar'
   import ArticleList from '@/components/articleList'
+  import QuestionList from '@/components/questionList'
+  import {
+    getNewArticles,
+    getHotArticles,
+    getRecommendArticles,
+    getFollowsArticles
+  } from '@/api/article'
+  import {
+    getNewQuestions,
+  } from '@/api/question'
 
   export default {
     data(){
       return {
         isLoading: false,
-        active: 1
+        active: 1,
+        pageIndex: {        //分页参数
+          newArticles: 0,
+          hotArticles: 0,
+          recommendArticles: 0,
+          followsArticles: 0,
+          newQuestions: 0
+        },
+        dataList: {        //数据列表
+          newArticles: [],
+          hotArticles: [],
+          recommendArticles: [],
+          followsArticles: [],
+          newQuestions: []
+        }
       }
     },
     components: {
       TabBar,
-      ArticleList
+      ArticleList,
+      QuestionList
     },
     methods: {
+      toSearchPage(){
+        this.$router.push({
+          name: 'search'
+        })
+      },
       onRefresh() {
         setTimeout(() => {
           this.$toast('刷新成功')
@@ -48,12 +103,71 @@
       },
       changeList(i){
         this.active = i
+        switch(i){
+          case 1:
+            this.getNew()
+            break;
+          case 2:
+            this.getHot()
+            break;
+          case 3:
+            this.getRecommend()
+            break;
+          case 4:
+            this.getFallows()
+            break;
+          case 5:
+            this.getQuestion()
+        }
       },
-      toSearchPage(){
-        this.$router.push({
-          name: 'search'
+      getNew(){
+        getNewArticles({page: this.pageIndex.newArticles})
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+
+        })
+      },
+      getHot(){
+        getHotArticles({page: this.pageIndex.hotArticles})
+        .then(res => {
+
+        })
+        .catch(err => {
+
+        })
+      },
+      getRecommend(){
+        getRecommendArticles({page: this.pageIndex.recommendArticles})
+        .then(res => {
+
+        })
+        .catch(err => {
+
+        })
+      },
+      getFallows(){
+        getFollowsArticles({page: this.pageIndex.followsArticles})
+        .then(res => {
+
+        })
+        .catch(err => {
+
+        })
+      },
+      getQuestion(){
+        getNewQuestions({page: this.pageIndex.newQuestions})
+        .then(res => {
+
+        })
+        .catch(err => {
+
         })
       }
+    },
+    created(){
+      this.getNew()
     }
   };
 </script>

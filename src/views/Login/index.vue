@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import {login} from '@/api/user'
+  import {login, getUserById} from '@/api/user'
 
   export default {
     data(){
@@ -41,6 +41,14 @@
         login(this.userInfo)
         .then(res => {
           console.log(res)
+          if(res.data.code==0){
+            getUserById({uid: this.userInfo.uid})
+            .then(res => {
+              console.log(res)
+              this.$store.dispatch('getUserInfo', res.data.userInfo)
+              localStorage.setItem('myUserId', res.data.userInfo.userId)
+            })
+          }
         })
       }
     }

@@ -33,6 +33,7 @@
 
 <script>
   import {register} from '@/api/user'
+  import {getTime} from '@/assets/js/pubfuncs'
 
   export default {
     data(){
@@ -54,6 +55,7 @@
     },
     methods: {
       signup(){
+        this.userInfo.registerDate = getTime()
         register(this.userInfo)
         .then(res => {
           console.log(res)

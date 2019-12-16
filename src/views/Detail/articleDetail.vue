@@ -103,6 +103,7 @@
 <script>
   import TabBar from '@/components/tabbar'
   import CommentList from '@/components/commentList'
+  import {getTime} from '@/assets/js/pubfuncs'
 
   export default {
     data(){

@@ -69,6 +69,7 @@
 </template>
 
 <script>
+  import {getTime} from '@/assets/js/pubfuncs'
 
   export default {
     data(){

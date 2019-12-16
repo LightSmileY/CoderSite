@@ -14,17 +14,17 @@
       </div>
       <div class="new">
         <div class="title">最新问题</div>
-          <post-list/>
+          <qpost-list :arrayList="postList.newQuestions"/>
         <div class="more">加载更多···</div>
       </div>
       <div class="youlike">
         <div class="title">猜你喜欢</div>
-          <post-list/>
+          <apost-list/>
         <div class="more">加载更多···</div>
       </div>
       <div class="hot">
         <div class="title">热门文章</div>
-          <post-list/>
+          <apost-list/>
         <div class="more">加载更多···</div>
       </div>
     </van-pull-refresh>
@@ -36,9 +36,11 @@
   import TabBar from '@/components/tabbar'
   import SearchBar from '@/components/searchbar'
   import Extends from '@/components/extends'
-  import PostList from '@/components/postList'
+  import ApostList from '@/components/apostList'
+  import QpostList from '@/components/qpostList'
   import {getHotArticles, getRecommendArticles} from '@/api/article'
   import {getNewQuestions} from '@/api/question'
+  import {getUserById} from '@/api/user'
 
   export default {
     data(){
@@ -50,18 +52,24 @@
           "http://cdn.fengblog.xyz/banner4.png"
         ],
         isLoading: false,
-        path: 'ws://10.100.238.63:8080/alicluster/server',
-        socket: null
+        pageIndex: {        //分页控制
+          newQuestions: 0,
+          hotArticles: 0,
+          recommendArticles: 0
+        },
+        postList: {        //数据列表
+          newQuestions: [],
+          hotArticles: [],
+          recommendArticles: []
+        }
       }
     },
     components: {
       TabBar,
       SearchBar,
       Extends,
-      PostList
-    },
-    mounted(){
-      this.init()
+      ApostList,
+      QpostList
     },
     methods: {
       onRefresh() {
@@ -70,48 +78,39 @@
           this.isLoading = false
         }, 500)
       },
-      //获取该页面所有数据
-      getData(){
+      /*获取该页面所有数据*/
+      getAllData(){
         this.getNew()
         this.getYouLike()
         this.getHot()
       },
-      //获取最新问题
+      /*获取数据*/
       getNew(){
-        getNewQuestions()
+        getNewQuestions({page: this.pageIndex.newQuestions})
         .then(res => {
-
+          console.log(res)
+          this.postList.newQuestions = res.data.questionList
         })
       },
-      //获取猜你喜欢
       getYouLike(){
-        getRecommendArticles()
-        .then(res => {
+        // getRecommendArticles({page: this.pageIndex.recommendArticles})
+        // .then(res => {
           
-        })
+        // })
       },
-      //获取热门文章
       getHot(){
-        getHotArticles()
-        .then(res => {
+        // getHotArticles({page: this.pageIndex.hotArticles})
+        // .then(res => {
           
-        })
-      },
-      // 加载更多最新问题
-      loadMoreNewQuestions(){
-        this.getNew()
-      },
-      // 加载更多猜你喜欢
-      loadMoreYouLikeArticles(){
-        this.getYouLike()
-      },
-      // 加载更热门文章
-      loadMoreHotArticles(){
-        this.getHot()
+        // })
       }
     },
     created(){
-      this.getData() //获取该页面所有数据
+      this.getAllData() //获取该页面所有数据
+      getUserById({uid: localStorage.myUserId})
+      .then(res => {
+        this.$store.dispatch('getUserInfo', res.data.userInfo)
+      })
     }
   };
 </script>
