@@ -1,12 +1,12 @@
 import axios from 'axios'
 import {serverUrl} from '@/config/utils.js'
 
-axios.defaults.baseURL = serverUrl + '/CoderSite/question/'
+const questionBaseURL = serverUrl + '/CoderSite/question/'
 
 /*获取10个最新问题*/
 export const getNewQuestions = params => {
   return axios({
-    url: 'getNewQuestions',
+    url: questionBaseURL + 'getNewQuestions',
     method: 'get',
     params
   })
@@ -15,7 +15,7 @@ export const getNewQuestions = params => {
 /*获取10个热门问题*/
 export const getHotQuestions = params => {
   return axios({
-    url: 'getHotQuestions',
+    url: questionBaseURL + 'getHotQuestions',
     method: 'get',
     params
   })
@@ -24,7 +24,7 @@ export const getHotQuestions = params => {
 /*获取10个推荐给用户的问题*/
 export const getRecommendQuestions = params => {
   return axios({
-    url: 'getRecommendQuestions',
+    url: questionBaseURL + 'getRecommendQuestions',
     method: 'get',
     params
   })
@@ -33,7 +33,7 @@ export const getRecommendQuestions = params => {
 /*获取某用户的关注人发表的10个最新问题*/
 export const getFollowsQuestions = params => {
   return axios({
-    url: 'getFollowsQuestions',
+    url: questionBaseURL + 'getFollowsQuestions',
     method: 'get',
     params
   })
@@ -42,7 +42,7 @@ export const getFollowsQuestions = params => {
 /*通过标签查询10个问题*/
 export const getQuestionsByLabels = params => {
   return axios({
-    url: 'getQuestionsByLabels',
+    url: questionBaseURL + 'getQuestionsByLabels',
     method: 'get',
     params
   })
@@ -51,7 +51,7 @@ export const getQuestionsByLabels = params => {
 /*通过关键词搜索10个问题*/
 export const getQuestionsByKeywords = params => {
   return axios({
-    url: 'getQuestionsByKeywords',
+    url: questionBaseURL + 'getQuestionsByKeywords',
     method: 'get',
     params
   })
@@ -60,7 +60,7 @@ export const getQuestionsByKeywords = params => {
 /* 通过用户id搜索该用户发表的10个问题*/
 export const getQuestionsByUserId = params => {
   return axios({
-    url: 'getQuestionsByUserId',
+    url: questionBaseURL + 'getQuestionsByUserId',
     method: 'get',
     params
   })
@@ -69,7 +69,7 @@ export const getQuestionsByUserId = params => {
 /*获取某用户收藏的10个问题*/
 export const getCollectQuestions = params => {
   return axios({
-    url: 'getCollectQuestions',
+    url: questionBaseURL + 'getCollectQuestions',
     method: 'get',
     params
   })
@@ -78,7 +78,7 @@ export const getCollectQuestions = params => {
 /*通过id查询1个问题*/
 export const getQuestionById = params => {
   return axios({
-    url: 'getQuestionById',
+    url: questionBaseURL + 'getQuestionById',
     method: 'get',
     params
   })
@@ -87,7 +87,7 @@ export const getQuestionById = params => {
 /*发表一篇问题*/
 export const addQuestion = data => {
   return axios({
-    url: 'addQuestion',
+    url: questionBaseURL + 'addQuestion',
     method: 'post',
     data
   })
@@ -96,52 +96,52 @@ export const addQuestion = data => {
 /*删除一篇问题*/
 export const deleteQuestionById = params => {
   return axios({
-    url: 'deleteQuestionById',
+    url: questionBaseURL + 'deleteQuestionById',
     method: 'delete',
     params
   })
 }
 
 /*点赞*/
-export const likeQuestion = data => {
+export const addLike = data => {
   return axios({
-    url: 'likeQuestion',
+    url: questionBaseURL + 'addLike',
     method: 'post',
     data
   })
 }
 
 /*取消点赞*/
-export const unlikeQuestion = params => {
+export const deleteLike = params => {
   return axios({
-    url: 'unlikeQuestion',
+    url: questionBaseURL + 'deleteLike',
     method: 'delete',
     params
   })
 }
 
 /*收藏*/
-export const collectQuestion = data => {
+export const addFavorite = data => {
   return axios({
-    url: 'collectQuestion',
+    url: questionBaseURL + 'addFavorite',
     method: 'post',
     data
   })
 }
 
 /*取消收藏*/
-export const uncollectQuestion = params => {
+export const deleteFavorite = params => {
   return axios({
-    url: 'uncollectQuestion',
+    url: questionBaseURL + 'deleteFavorite',
     method: 'delete',
     params
   })
 }
 
 /*评论*/
-export const answerQuestion = data => {
+export const addAnswer = data => {
   return axios({
-    url: 'answerQuestion',
+    url: questionBaseURL + 'addAnswer',
     method: 'post',
     data
   })
@@ -149,7 +149,7 @@ export const answerQuestion = data => {
 
 export const deleteAnswer = params => {
   return axios({
-    url: 'deleteAnswer',
+    url: questionBaseURL + 'deleteAnswer',
     method: 'delete',
     params
   })

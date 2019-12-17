@@ -1,12 +1,12 @@
 import axios from 'axios'
 import {serverUrl} from '@/config/utils.js'
 
-axios.defaults.baseURL = serverUrl + '/CoderSite/article/'
+const articleBaseURL = serverUrl + '/CoderSite/article/'
 
 /*获取10个最新文章*/
 export const getNewArticles = params => {
   return axios({
-    url: 'getNewArticles',
+    url: articleBaseURL + 'getNewArticles',
     method: 'get',
     params
   })
@@ -15,7 +15,7 @@ export const getNewArticles = params => {
 /*获取10个热门文章*/
 export const getHotArticles = params => {
   return axios({
-    url: 'getHotArticles',
+    url: articleBaseURL + 'getHotArticles',
     method: 'get',
     params
   })
@@ -24,7 +24,7 @@ export const getHotArticles = params => {
 /*获取10个推荐给用户的文章*/
 export const getRecommendArticles = params => {
   return axios({
-    url: 'getRecommendArticles',
+    url: articleBaseURL + 'getRecommendArticles',
     method: 'get',
     params
   })
@@ -33,7 +33,7 @@ export const getRecommendArticles = params => {
 /*获取某用户的关注人发表的10个最新文章*/
 export const getFollowsArticles = params => {
   return axios({
-    url: 'getFollowsArticles',
+    url: articleBaseURL + 'getFollowsArticles',
     method: 'get',
     params
   })
@@ -42,7 +42,7 @@ export const getFollowsArticles = params => {
 /*通过标签查询10个文章*/
 export const getArticlesByLabels = params => {
   return axios({
-    url: 'getArticlesByLabels',
+    url: articleBaseURL + 'getArticlesByLabels',
     method: 'get',
     params
   })
@@ -51,7 +51,7 @@ export const getArticlesByLabels = params => {
 /*通过关键词搜索10个文章*/
 export const getArticlesByKeywords = params => {
   return axios({
-    url: 'getArticlesByKeywords',
+    url: articleBaseURL + 'getArticlesByKeywords',
     method: 'get',
     params
   })
@@ -60,7 +60,7 @@ export const getArticlesByKeywords = params => {
 /* 通过用户id搜索该用户发表的10个文章*/
 export const getArticlesByUserId = params => {
   return axios({
-    url: 'getArticlesByKeywords',
+    url: articleBaseURL + 'getArticlesByKeywords',
     method: 'get',
     params
   })
@@ -69,7 +69,7 @@ export const getArticlesByUserId = params => {
 /*获取某用户收藏的10个文章*/
 export const getCollectArticles = params => {
   return axios({
-    url: 'getCollectArticles',
+    url: articleBaseURL + 'getCollectArticles',
     method: 'get',
     params
   })
@@ -78,7 +78,7 @@ export const getCollectArticles = params => {
 /*通过id查询1个文章*/
 export const getArticleById = params => {
   return axios({
-    url: 'getArticleById',
+    url: articleBaseURL + 'getArticleById',
     method: 'get',
     params
   })
@@ -87,7 +87,7 @@ export const getArticleById = params => {
 /*发表一篇文章*/
 export const addArticle = data => {
   return axios({
-    url: 'addArticle',
+    url: articleBaseURL + 'addArticle',
     method: 'post',
     data
   })
@@ -96,7 +96,7 @@ export const addArticle = data => {
 /*删除一篇文章*/
 export const deleteArticle = params => {
   return axios({
-    url: 'addArticle',
+    url: articleBaseURL + 'addArticle',
     method: 'delete',
     params
   })
@@ -105,7 +105,7 @@ export const deleteArticle = params => {
 /*点赞*/
 export const likeArticle = data => {
   return axios({
-    url: 'likeArticle',
+    url: articleBaseURL + 'likeArticle',
     method: 'post',
     data
   })
@@ -114,7 +114,7 @@ export const likeArticle = data => {
 /*取消点赞*/
 export const unlikeArticle = params => {
   return axios({
-    url: 'unlikeArticle',
+    url: articleBaseURL + 'unlikeArticle',
     method: 'delete',
     params
   })
@@ -123,7 +123,7 @@ export const unlikeArticle = params => {
 /*收藏*/
 export const collectArticle = data => {
   return axios({
-    url: 'collectArticle',
+    url: articleBaseURL + 'collectArticle',
     method: 'post',
     data
   })
@@ -132,7 +132,7 @@ export const collectArticle = data => {
 /*取消收藏*/
 export const uncollectArticle = params => {
   return axios({
-    url: 'uncollectArticle',
+    url: articleBaseURL + 'uncollectArticle',
     method: 'delete',
     params
   })
@@ -141,7 +141,7 @@ export const uncollectArticle = params => {
 /*评论*/
 export const commentArticle = data => {
   return axios({
-    url: 'commentArticle',
+    url: articleBaseURL + 'commentArticle',
     method: 'post',
     data
   })
@@ -149,7 +149,7 @@ export const commentArticle = data => {
 
 export const deleteComment = params => {
   return axios({
-    url: 'deleteComment',
+    url: articleBaseURL + 'deleteComment',
     method: 'delete',
     params
   })

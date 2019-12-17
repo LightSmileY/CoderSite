@@ -1,12 +1,12 @@
 import axios from 'axios'
 import {serverUrl} from '@/config/utils.js'
 
-axios.defaults.baseURL = serverUrl + '/CoderSite/user/'
+const userBaseURL = serverUrl + '/CoderSite/user/'
 
 /*注册*/
 export const login = params => {
   return axios({
-    url: 'login',
+    url: userBaseURL + 'login',
     method: 'post',
     params
   })
@@ -15,7 +15,7 @@ export const login = params => {
 /*登录*/
 export const register = data => {
   return axios({
-    url: 'register',
+    url: userBaseURL + 'register',
     method: 'post',
     data
   })
@@ -24,7 +24,7 @@ export const register = data => {
 /*获取用户资料*/
 export const getUserById = params => {
   return axios({
-    url: 'getUserById',
+    url: userBaseURL + 'getUserById',
     method: 'get',
     params
   })
@@ -33,7 +33,7 @@ export const getUserById = params => {
 /*修改用户资料*/
 export const updateUserInfo = data => {
   return axios({
-    url: 'updateUserInfo',
+    url: userBaseURL + 'updateUserInfo',
     method: 'post',
     data
   })
@@ -42,7 +42,7 @@ export const updateUserInfo = data => {
 /*获取某用户的所有粉丝*/
 export const getAllFans = params => {
   return axios({
-    url: 'getAllFans',
+    url: userBaseURL + 'getAllFans',
     method: 'get',
     params
   })
@@ -51,7 +51,7 @@ export const getAllFans = params => {
 /*获取用户的所有关注*/
 export const getAllFollows = params => {
   return axios({
-    url: 'getAllFollows',
+    url: userBaseURL + 'getAllFollows',
     method: 'get',
     params
   })
@@ -60,16 +60,16 @@ export const getAllFollows = params => {
 /*关注用户*/
 export const addFollow = data => {
   return axios({
-    url: 'addFollow',
+    url: userBaseURL + 'addFollow',
     method: 'post',
     data
   })
 }
 
 /*取消关注用户*/
-export const unAttentUser = params => {
+export const deleteFollow = params => {
   return axios({
-    url: 'unAttentUser',
+    url: userBaseURL + 'deleteFollow',
     method: 'delete',
     params
   })
