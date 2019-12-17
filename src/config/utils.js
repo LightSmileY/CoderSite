@@ -1,1 +1,1 @@
-export const serverUrl = 'http://fengblog.xyz:8080'
+export const serverUrl = 'http://113.55.115.212:8080'

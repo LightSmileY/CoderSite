@@ -104,13 +104,6 @@
           
         // })
       }
-    },
-    created(){
-      this.getAllData() //获取该页面所有数据
-      getUserById({uid: localStorage.myUserId})
-      .then(res => {
-        this.$store.dispatch('getUserInfo', res.data.userInfo)
-      })
     }
   };
 </script>

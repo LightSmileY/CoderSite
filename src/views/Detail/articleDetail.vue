@@ -33,7 +33,10 @@
               </div>
             </div>
             <div class="attent">
-              <van-button 
+              <span v-if="questionInfo.userId == $store.state.userInfo.userId">删除
+              </span>
+              <van-button
+              v-else
               plain 
               hairline 
               round

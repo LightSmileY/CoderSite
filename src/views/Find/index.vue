@@ -124,45 +124,53 @@
         getNewArticles({page: this.pageIndex.newArticles})
         .then(res => {
           console.log(res)
+          this.dataList.newArticles = res.data.articleList
         })
         .catch(err => {
-
+          console.log(err)
         })
       },
       getHot(){
         getHotArticles({page: this.pageIndex.hotArticles})
         .then(res => {
-
+          console.log(res)
+          this.dataList.hotArticles = res.data.articleList
         })
         .catch(err => {
-
+          console.log(err)
         })
       },
       getRecommend(){
         getRecommendArticles({page: this.pageIndex.recommendArticles})
         .then(res => {
-
+          console.log(res)
+          this.dataList.recommendArticles = res.data.articleList
         })
         .catch(err => {
-
+          console.log(err)
         })
       },
       getFallows(){
-        getFollowsArticles({page: this.pageIndex.followsArticles})
+        getFollowsArticles({
+          uid: 'lightsmiley',
+          page: this.pageIndex.followsArticles
+        })
         .then(res => {
-
+          console.log(res)
+          this.dataList.followsArticles = res.data.articleList
         })
         .catch(err => {
-
+          console.log(err)
         })
       },
       getQuestion(){
         getNewQuestions({page: this.pageIndex.newQuestions})
         .then(res => {
-
+          console.log(res)
+          this.dataList.newQuestions = res.data.questionList
         })
         .catch(err => {
-
+          console.log(err)
         })
       }
     },

@@ -2,7 +2,7 @@
   <ul id="articleList">
     <waterfall :col='2' :gutterWidth="gutterWidth">
       <template>
-         <li v-for="item in 12" @click="toQuestionDetailPage(i)">
+         <li v-for="item in arrayList" @click="toQuestionDetailPage(i)">
           <div class="image">
             <!-- van图片 -->
             <van-image
@@ -16,10 +16,10 @@
             </van-image>
           </div>
           <div class="title">
-            基于TensorFlow的实时妆容迁移
+            {{item.title}}
           </div>
           <div class="author">
-            Qianfeng Yuan
+            {{item.userNickname}}
           </div>
           <!-- 点赞、评论、收藏信息 -->
           <div class="operinfo">
@@ -27,19 +27,19 @@
               <div class="icon">
                 <van-icon name="like-o" />
               </div>
-              <div class="label">35</div>
+              <div class="label">{{item.likeCount}}</div>
             </div>
             <div class="item">
               <div class="icon">
                 <van-icon name="star-o" />
               </div>
-              <div class="label">12</div>
+              <div class="label">{{item.collectCount}}</div>
             </div>
             <div class="item">
               <div class="icon">
                 <van-icon name="chat-o" />
               </div>
-              <div class="label">27</div>
+              <div class="label">{{item.answerCount}}</div>
             </div>
           </div>
         </li>
@@ -56,7 +56,7 @@
       }
     },
     props: {
-      
+      arrayList: Array
     },
     methods: {
       /*查看问题详情*/

@@ -56,6 +56,11 @@
         .attent{
           width: 80px;
           @include flex-jus-end();
+
+          span{
+            font-size: 15px;
+            color: #2B62DF;
+          }
         }
       }
 
