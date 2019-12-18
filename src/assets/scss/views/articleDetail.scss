@@ -79,8 +79,17 @@
         }
 
         .image{
+          width: 100%;
+          display: flex;
+
           img{
             width: 100%
+          }
+          
+          .van-image{
+            width: 33vw;
+            height: 33vw;
+            display: 1;
           }
         }
 

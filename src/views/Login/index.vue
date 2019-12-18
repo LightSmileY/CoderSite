@@ -20,6 +20,9 @@
       <div class="btn">
         <van-button plain round hairline size="large" type="primary" @click="signin">登录</van-button>
       </div>
+      <div class="btn">
+        <van-button plain round hairline size="large" type="primary" @click="toRegisterPage">去注册</van-button>
+      </div>
     </div>
   </div>
 </template>
@@ -47,8 +50,19 @@
               console.log(res)
               this.$store.dispatch('getUserInfo', res.data.userInfo)
               localStorage.setItem('myUserId', res.data.userInfo.userId)
+              this.toMainPage()
             })
           }
+        })
+      },
+      toRegisterPage(){
+        this.$router.push({
+          name: "register"
+        })
+      },
+      toMainPage(){
+        this.$router.push({
+          name: "main"
         })
       }
     }

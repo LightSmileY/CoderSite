@@ -4,7 +4,7 @@
       fixed
       left-arrow
       @click-left="goBack"
-      title="文章"/>
+      title="问题"/>
     <div class="container">
       <div class="article">
         <!-- 下拉刷新 -->
@@ -16,7 +16,7 @@
                 <van-image
                   lazy-load
                   fit="cover"
-                  src="http://cdn.fengblog.xyz/avatar.jpg">
+                  :src="articleInfo.avatar">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
                   </template>
@@ -25,15 +25,15 @@
               </div>
               <div class="name-time">
                 <div class="name">
-                  浅笑半离兮
+                  {{articleInfo.userNickname}}
                 </div>
                 <div class="time">
-                  2019-11-23 21:56:30
+                  {{articleInfo.postTime}}
                 </div>
               </div>
             </div>
             <div class="attent">
-              <span v-if="questionInfo.userId == $store.state.userInfo.userId">删除
+              <span v-if="articleInfo.userId == $store.state.userInfo.userId">删除
               </span>
               <van-button
               v-else
@@ -42,15 +42,20 @@
               round
               color="#939393"
               type="default" 
-              size="mini">+关注</van-button>
+              size="mini">{{articleInfo.isAttent ? "+关注" : "已关注"}}</van-button>
             </div>
           </div>
-          <div class="title">#嘻嘻嘻嘻嘻#</div>
+          <div class="title">#{{articleInfo.title}}#</div>
+          <div class="labels">
+            <span class="tag-box" v-for="item in articleInfo.labels">
+              <van-tag color="#f2826a" plain>{{item}}</van-tag>
+            </span>
+          </div>
           <ul class="content">
-            <li v-for="item in 1">
-              <p>哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或哈哈哈哈哈哈</p>
-              <div class="image">
-                <img src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg" alt="">
+            <li>
+              <p>{{articleInfo.content}}</p>
+              <div class="image" v-for="item in articleInfo.images">
+                <img :src="item" alt="">
               </div>
             </li>
           </ul>
@@ -59,26 +64,28 @@
             <ul>
               <li>
                 <div class="icon">
-                  <van-icon name="like-o" />
+                  <van-icon name="like-o"/>
+                  <van-icon name="like" />
                 </div>
-                <div class="label">234</div>
+                <div class="label">{{articleInfo.likeCount}}</div>
               </li>
               <li>
                 <div class="icon">
-                  <van-icon name="star-o" />
+                  <van-icon name="star-o"/>
+                  <van-icon name="star" />
                 </div>
-                <div class="label">128</div>
+                <div class="label">{{articleInfo.collectCount}}</div>
               </li>
               <li>
                 <div class="icon" @click="showPostBox = true">
                   <van-icon name="chat-o" />
                 </div>
-                <div class="label">175</div>
+                <div class="label">{{articleInfo.answerCount}}</div>
               </li>
             </ul>
           </div>
-          <van-divider content-position="left">评论</van-divider>
-          <comment-list/>
+          <van-divider content-position="left">回答</van-divider>
+          <comment-list :arrayList="articleInfo.answers"/>
         </van-pull-refresh>
       </div>
     </div>
@@ -87,7 +94,7 @@
       <div class="wrapper" @click.stop>
         <div class="postMessage">
           <van-field
-            v-model="sms"
+            v-model="commentContent"
             center
             rows="1"
             autosize

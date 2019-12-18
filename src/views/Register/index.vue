@@ -27,6 +27,9 @@
       <div class="btn">
         <van-button plain round hairline size="large" type="primary" @click="signup">注册</van-button>
       </div>
+      <div class="btn">
+        <van-button plain round hairline size="large" type="primary" @click="toLoginPage">去登录</van-button>
+      </div>
     </div>
   </div>
 </template>
@@ -59,6 +62,25 @@
         register(this.userInfo)
         .then(res => {
           console.log(res)
+          this.toMainPage()
+          if(res.data.code==0){
+            getUserById({uid: this.userInfo.uid})
+            .then(res => {
+              console.log(res)
+              this.$store.dispatch('getUserInfo', res.data.userInfo)
+              localStorage.setItem('myUserId', res.data.userInfo.userId)
+            })
+          }
+        })
+      },
+      toLoginPage(){
+        this.$router.push({
+          name: "login"
+        })
+      },
+      toMainPage(){
+        this.$router.push({
+          name: "main"
         })
       }
     }

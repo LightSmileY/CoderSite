@@ -7,7 +7,7 @@
         <van-image
           lazy-load
           fit="cover"
-          src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg">
+          :src="item.content[0].image">
           <template v-slot:loading>
             <van-loading type="spinner" size="20" />
           </template>
@@ -16,7 +16,7 @@
       </div>
       <div class="section">
         <!-- 文章内容 -->
-        <div class="desc">{{item.content}}</div>
+        <div class="desc">{{item.content[0].para}}</div>
         <!-- 点赞、评论、收藏信息 -->
         <ul class="operinfo">
           <li class="operinfo-item">

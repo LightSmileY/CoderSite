@@ -58,22 +58,22 @@ export const getQuestionsByKeywords = params => {
 }
 
 /* 通过用户id搜索该用户发表的10个问题*/
-export const getQuestionsByUserId = params => {
+export const getUserNewestQuestion = params => {
   return axios({
-    url: questionBaseURL + 'getQuestionsByUserId',
+    url: questionBaseURL + 'getUserNewestQuestion',
     method: 'get',
     params
   })
 }
 
 /*获取某用户收藏的10个问题*/
-export const getCollectQuestions = params => {
-  return axios({
-    url: questionBaseURL + 'getCollectQuestions',
-    method: 'get',
-    params
-  })
-}
+// export const getFollowsQuestions = params => {
+//   return axios({
+//     url: questionBaseURL + 'getFollowsQuestions',
+//     method: 'get',
+//     params
+//   })
+// }
 
 /*通过id查询1个问题*/
 export const getQuestionById = params => {
@@ -103,11 +103,11 @@ export const deleteQuestionById = params => {
 }
 
 /*点赞*/
-export const addLike = data => {
+export const addLike = params => {
   return axios({
     url: questionBaseURL + 'addLike',
     method: 'post',
-    data
+    params
   })
 }
 
@@ -121,11 +121,11 @@ export const deleteLike = params => {
 }
 
 /*收藏*/
-export const addFavorite = data => {
+export const addFavorite = params => {
   return axios({
     url: questionBaseURL + 'addFavorite',
     method: 'post',
-    data
+    params
   })
 }
 
@@ -139,11 +139,11 @@ export const deleteFavorite = params => {
 }
 
 /*评论*/
-export const addAnswer = data => {
+export const addAnswer = params => {
   return axios({
     url: questionBaseURL + 'addAnswer',
     method: 'post',
-    data
+    params
   })
 }
 

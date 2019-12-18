@@ -33,16 +33,19 @@
               </div>
             </div>
             <div class="attent">
-              <span v-if="questionInfo.userId == $store.state.userInfo.userId">删除
+              <span 
+              @click="deleteQuestion"
+              v-if="questionInfo.userId === $store.state.userInfo.userId">删除
               </span>
               <van-button
+              @click="follow"
               v-else
               plain 
               hairline 
               round
               color="#939393"
               type="default" 
-              size="mini">+关注</van-button>
+              size="small">{{questionInfo.isAttent ? "已关注" : "+关注"}}</van-button>
             </div>
           </div>
           <div class="title">#{{questionInfo.title}}#</div>
@@ -55,7 +58,7 @@
             <li>
               <p>{{questionInfo.content}}</p>
               <div class="image" v-for="item in questionInfo.images">
-                <img :src="item" alt="">
+                <van-image fit="cover" :src="item"/>
               </div>
             </li>
           </ul>
@@ -64,15 +67,27 @@
             <ul>
               <li>
                 <div class="icon">
-                  <van-icon name="like-o" />
-                  <van-icon name="like" />
+                  <van-icon 
+                  @click="like"
+                  v-if="!questionInfo.isLike"
+                  name="like-o"/>
+                  <van-icon 
+                  @click="unLike"
+                  v-else
+                  name="like" />
                 </div>
                 <div class="label">{{questionInfo.likeCount}}</div>
               </li>
               <li>
                 <div class="icon">
-                  <van-icon name="star-o" />
-                  <van-icon name="star" />
+                  <van-icon 
+                  @click="collect"
+                  v-if="!questionInfo.isCollect"
+                  name="star-o"/>
+                  <van-icon 
+                  @click="unCollect"
+                  v-else
+                  name="star" />
                 </div>
                 <div class="label">{{questionInfo.collectCount}}</div>
               </li>
@@ -85,7 +100,7 @@
             </ul>
           </div>
           <van-divider content-position="left">回答</van-divider>
-          <comment-list :arrayList="questionInfo.answers"/>
+          <comment-list :question="questionInfo"/>
         </van-pull-refresh>
       </div>
     </div>
@@ -102,7 +117,7 @@
             type="textarea"
             placeholder="请输入···"
           >
-            <van-button slot="button" size="small" type="primary">发送</van-button>
+            <van-button @click="answer" slot="button" size="small" type="primary">发送</van-button>
           </van-field>
         </div>
       </div>
@@ -157,21 +172,17 @@
         return {
           id: uuid(),
           qid: this.questionInfo.qid,
-          uid: this.questionInfo.userId,
+          uid: this.$store.state.userInfo.userId,
           content: param,
           time: new Date()
         }
       },
-      /*传递给取消点赞等操作的参数*/
-      getDeleteInfo(param){
-        return {
-          id: param,
-          qid: this.questionInfo.qid
-        }
-      },
       /*获取问题*/
       getQuestion(){
-        getQuestionById({qid: this.$route.query.id})
+        getQuestionById({
+          qid: this.$route.query.id,
+          uid: this.$store.state.userInfo.userId
+        })
         .then(res => {
           console.log(res)
           this.questionInfo = res.data.question
@@ -179,47 +190,70 @@
       },
       /*删除问题*/
       deleteQuestion(){
-        deleteQuestionById()
-        .then(res => {
-          console.log(res)
-          this.questionInfo = res.data.question
-        })
+        Dialog.confirm({
+          title: '标题',
+          message: '弹窗内容'
+        }).then(() => {
+          
+        }).catch(() => {
+          
+        });
+        // deleteQuestionById({
+        //   qid: this.questionInfo.qid
+        // })
+        // .then(res => {
+        //   console.log(res)
+        //   this.questionInfo = res.data.question
+        // })
       },
       /*关注*/
       follow(){
-        addFollow()
-        .then(res => {
-          console.log(res)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-      },
-      /*取消关注*/
-      unFollow(){
-        deleteFollow()
-        .then(res => {
-          console.log(res)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+        if(!this.questionInfo.isAttent)
+          addFollow({
+            uid: this.$store.state.userInfo.userId,
+            objId: this.questionInfo.userId
+          })
+          .then(res => {
+            console.log(res)
+            this.questionInfo.isAttent = true
+          })
+          .catch(err => {
+            console.log(err)
+          })
+        else
+          deleteFollow({
+            uid: this.$store.state.userInfo.userId,
+            objId: this.questionInfo.userId
+          })
+          .then(res => {
+            console.log(res)
+            this.questionInfo.isAttent = false
+          })
+          .catch(err => {
+            console.log(err)
+          })
       },
       /*点赞*/
       like(){
         addLike(this.getAddInfo())
         .then(res => {
           console.log(res)
+          this.questionInfo.isLike = true
+          this.questionInfo.likeCount ++
         })
         .catch(err => {
           console.log(err)
         })
       },
-      /*取消点赞*/
-      unLike(param){
-        deleteLike(getDeleteInfo(param))
+      unLike(){
+        deleteLike({
+          uid: this.$store.state.userInfo.userId,
+          qid: this.questionInfo.qid
+        })
         .then(res => {
           console.log(res)
+          this.questionInfo.isLike = false
+          this.questionInfo.likeCount --
         })
         .catch(err => {
           console.log(err)
@@ -230,6 +264,8 @@
         addFavorite(this.getAddInfo())
         .then(res => {
           console.log(res)
+          this.questionInfo.isLike = true
+          this.questionInfo.likeCount ++
         })
         .catch(err => {
           console.log(err)
@@ -237,9 +273,14 @@
       },
       /*取消收藏*/
       unCollect(param){
-        deleteFavorite(getDeleteInfo(param))
+        deleteFavorite({
+          uid: this.$store.state.userInfo.userId,
+          qid: this.questionInfo.qid
+        })
         .then(res => {
           console.log(res)
+          this.questionInfo.isLike = false
+          this.questionInfo.likeCount --
         })
         .catch(err => {
           console.log(err)

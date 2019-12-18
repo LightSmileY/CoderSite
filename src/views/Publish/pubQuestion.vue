@@ -95,7 +95,7 @@
         uploadImages: [],
         questionInfo: {   //问题发表接口参数
           qid: '',
-          uid: 'lightsmiley',
+          uid: this.$store.state.userInfo.userId,
           postTime: '',
           labels: [],
           title: '',
@@ -122,15 +122,37 @@
       },
       afterRead(file) {
         //上传图片到七牛云
-        file.forEach(async (el, index) => {
+        if (Array.isArray(file)) {
+          file.forEach(async (el, index) => {
+            this.qiniuData.key = uuid()
+            // 单个图片文件及参数
+            let data = new FormData()
+            data.append('file', el.file)
+            data.append('token', this.qiniuData.token)
+            data.append('key', this.qiniuData.key)
+            //上传图片到七牛云
+            await axios({
+              method: 'POST',
+              url: this.upload_qiniu_url,
+              data: data
+            }).then(res =>{
+              console.log(res)
+              //存储图片外链
+              this.questionInfo.images.push(this.upload_qiniu_addr + res.data.key)
+              console.log('1'+ res.data.key)
+            }).catch(err => {
+              console.log(err)
+            })
+          })
+        }else{
           this.qiniuData.key = uuid()
           // 单个图片文件及参数
           let data = new FormData()
-          data.append('file', el.file)
+          data.append('file', file.file)
           data.append('token', this.qiniuData.token)
           data.append('key', this.qiniuData.key)
           //上传图片到七牛云
-          await axios({
+          axios({
             method: 'POST',
             url: this.upload_qiniu_url,
             data: data
@@ -138,11 +160,10 @@
             console.log(res)
             //存储图片外链
             this.questionInfo.images.push(this.upload_qiniu_addr + res.data.key)
-            console.log('1'+ res.data.key)
           }).catch(err => {
             console.log(err)
           })
-        })
+        }
       },
       publish(){
         this.questionInfo.qid = uuid()
@@ -150,6 +171,13 @@
         addQuestion(this.questionInfo)
         .then(res => {
           console.log(res)
+          this.$toast('发表成功')
+          this.$router.push({
+            name: 'questionPublishSuccess',
+            query: {
+              qid: this.questionInfo.qid
+            }
+          })
         })
       }
     },

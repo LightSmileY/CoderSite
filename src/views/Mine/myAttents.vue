@@ -51,7 +51,7 @@
         })
       },
       getAttentList(){
-        getAllFollows({uid: 'lightsmiley'})
+        getAllFollows({uid: this.$store.state.userInfo.userId})
         .then(res => {
           console.log(res)
           this.userList = res.data.attents

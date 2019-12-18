@@ -3,6 +3,14 @@ import {serverUrl} from '@/config/utils.js'
 
 const articleBaseURL = serverUrl + '/CoderSite/article/'
 
+/*获取所有文章*/
+export const getAllArticles = () => {
+  return axios({
+    url: articleBaseURL + 'getAllArticles',
+    method: 'get'
+  })
+}
+
 /*获取10个最新文章*/
 export const getNewArticles = params => {
   return axios({
@@ -58,9 +66,9 @@ export const getArticlesByKeywords = params => {
 }
 
 /* 通过用户id搜索该用户发表的10个文章*/
-export const getArticlesByUserId = params => {
+export const getUserNewestPM = params => {
   return axios({
-    url: articleBaseURL + 'getArticlesByKeywords',
+    url: articleBaseURL + 'getUserNewestPM',
     method: 'get',
     params
   })
@@ -103,11 +111,11 @@ export const deleteArticle = params => {
 }
 
 /*点赞*/
-export const likeArticle = data => {
+export const likeArticle = params => {
   return axios({
     url: articleBaseURL + 'likeArticle',
     method: 'post',
-    data
+    params
   })
 }
 

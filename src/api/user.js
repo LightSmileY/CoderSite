@@ -58,11 +58,11 @@ export const getAllFollows = params => {
 }
 
 /*关注用户*/
-export const addFollow = data => {
+export const addFollow = params => {
   return axios({
     url: userBaseURL + 'addFollow',
     method: 'post',
-    data
+    params
   })
 }
 

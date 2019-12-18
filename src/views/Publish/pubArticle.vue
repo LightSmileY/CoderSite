@@ -103,7 +103,7 @@
         ],
         articleInfo: {   //文章发表接口参数
           aid: '',
-          uid: 'lightsmiley',
+          uid: this.$store.state.userInfo.userId,
           postTime: '',
           labels: [],
           title: '',
@@ -163,11 +163,13 @@
         })
       },
       publish(){
-        this.articleInfo.qid = uuid()
+        this.articleInfo.aid = uuid()
         this.articleInfo.postTime = new Date()
         addArticle(this.articleInfo)
         .then(res => {
           console.log(res)
+          this.$toast('发表成功')
+          this.$router.go(-1)
         })
       }
     },

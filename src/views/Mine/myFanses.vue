@@ -52,7 +52,7 @@
         })
       },
       getFansList(){
-        getAllFans({uid: 'lightsmiley'})
+        getAllFans({uid: this.$store.state.userInfo.userId})
         .then(res => {
           console.log(res)
           this.userList = res.data.attents

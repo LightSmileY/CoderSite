@@ -1,12 +1,12 @@
 <template>
   <div id="commentList">
-    <li v-for="item in 5">
+    <li v-for="item in question.answers">
       <div class="avatar">
         <!-- van图片 -->
         <van-image
           lazy-load
           fit="cover"
-          src="http://cdn.fengblog.xyz/avatar.jpg">
+          :src="item.avatar">
           <template v-slot:loading>
             <van-loading type="spinner" size="20" />
           </template>
@@ -14,12 +14,12 @@
         </van-image>
       </div>
       <div class="main">
-        <div class="name">浅笑半离兮</div>
+        <div class="name">{{item.nickname}}</div>
         <div class="content">
-          哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或
+          {{item.content}}
         </div>
         <div class="info">
-          <div class="info-time">35分钟前</div>
+          <div class="info-time">{{item.time}}</div>
           <div class="info-reply">回复</div>
         </div>
       </div>
@@ -34,6 +34,9 @@
       return {
 
       }
+    },
+    props: {
+      question: Object
     }
   };
 </script>

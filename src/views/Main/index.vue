@@ -19,12 +19,12 @@
       </div>
       <div class="youlike">
         <div class="title">猜你喜欢</div>
-          <apost-list/>
+          <apost-list :arrayList="postList.recommendArticles"/>
         <div class="more">加载更多···</div>
       </div>
       <div class="hot">
         <div class="title">热门文章</div>
-          <apost-list/>
+          <apost-list :arrayList="postList.hotArticles"/>
         <div class="more">加载更多···</div>
       </div>
     </van-pull-refresh>
@@ -38,8 +38,14 @@
   import Extends from '@/components/extends'
   import ApostList from '@/components/apostList'
   import QpostList from '@/components/qpostList'
-  import {getHotArticles, getRecommendArticles} from '@/api/article'
-  import {getNewQuestions} from '@/api/question'
+  import {
+    getHotArticles, 
+    getRecommendArticles,
+    getAllArticles
+  } from '@/api/article'
+  import {
+    getNewQuestions
+  } from '@/api/question'
   import {getUserById} from '@/api/user'
 
   export default {
@@ -93,17 +99,30 @@
         })
       },
       getYouLike(){
-        // getRecommendArticles({page: this.pageIndex.recommendArticles})
-        // .then(res => {
-          
-        // })
+        getAllArticles()
+        .then(res => {
+          this.postList.recommendArticles = res.data.articleList
+          this.postList.recommendArticles.sort((a, b) => {
+            let x = a["postTime"]
+            let y = b["postTime"]
+            return x > y ? -1 : x < y ? 1 : 0
+          })
+        })
       },
       getHot(){
-        // getHotArticles({page: this.pageIndex.hotArticles})
-        // .then(res => {
-          
-        // })
+        getAllArticles()
+        .then(res => {
+          this.postList.hotArticles = res.data.articleList
+          this.postList.hotArticles.sort((a, b) => {
+            let x = a["likeCount"]
+            let y = b["likeCount"]
+            return x > y ? -1 : x < y ? 1 : 0
+          })
+        })
       }
+    },
+    created(){
+      this.getAllData()
     }
   };
 </script>

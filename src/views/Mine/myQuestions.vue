@@ -18,13 +18,14 @@
 
 <script>
   import ArticleList from '@/components/articleList'
-  import {getQuestionsByUserId} from '@/api/question'
+  import {getUserNewestQuestion} from '@/api/question'
 
   export default {
     data(){
       return {
         isLoading: false,
-        questionList: []
+        questionList: [],
+        pageIndex: 0
       }
     },
     components: {
@@ -35,21 +36,26 @@
         this.$router.go(-1)
       },
       onRefresh() {
-        getQuestionsByUserId({
-
+        getUserNewestQuestion({
+          page: 0,
+          uid: this.$store.state.userInfo.userId
         })
         .then(res => {
+          this.questionList = res.data.questionList
           this.$toast('刷新成功')
           this.isLoading = false
         })
       }
     },
     created(){
-      getQuestionsByUserId({
-          
+      getUserNewestQuestion({
+        page: this.pageIndex,
+        uid: this.$store.state.userInfo.userId
       })
       .then(res => {
-
+        console.log(res)
+        this.questionList = res.data.questionList
+        this.pageIndex ++
       })
     }
   };
