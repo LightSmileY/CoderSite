@@ -61,7 +61,7 @@
 
 <script>
   import AnswerList from '@/components/answerList'
-  import {getUserInfo, updateUserInfo} from '@/api/article'
+  import {getUserInfo, updateUserInfo} from '@/api/user'
 
   export default {
     data(){

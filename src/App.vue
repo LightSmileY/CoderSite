@@ -8,7 +8,7 @@
   import {getUserById} from '@/api/user'
   
   export default {
-    created(){
+    beforeCreate(){
       getUserById({uid: localStorage.myUserId})
       .then(res => {
         this.$store.dispatch('getUserInfo', res.data.userInfo)

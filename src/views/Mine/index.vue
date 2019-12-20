@@ -12,7 +12,7 @@
           <van-image
             lazy-load
             fit="cover"
-            src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg">
+            :src="userInfo.userBasicInfo.coverPicture">
             <template v-slot:loading>
               <van-loading type="spinner" size="20" />
             </template>
@@ -23,7 +23,7 @@
             <van-image
               lazy-load
               fit="cover"
-              src="http://cdn.fengblog.xyz/avatar.jpg">
+              :src="userInfo.userBasicInfo.avatar">
               <template v-slot:loading>
                 <van-loading type="spinner" size="20" />
               </template>
@@ -39,34 +39,34 @@
         </div>
         <div class="user">
           <div class="user-name">
-            浅笑半离兮
+            {{userInfo.userBasicInfo.nickname}}
           </div>
           <div class="user-profile">
-            不纠结，不抱怨，不后悔，不解释~
+            {{userInfo.userBasicInfo.signature}}
           </div>
         </div>
         <ul class="infos">
           <router-link to="/myArticles">
           <li>
-            <div class="count">35</div>
+            <div class="count">{{userInfo.articleCount}}</div>
             <div class="label">文章</div>
           </li>
           </router-link>
           <router-link to="/myQuestions">
           <li>
-            <div class="count">18</div>
+            <div class="count">{{userInfo.questionCount}}</div>
             <div class="label">问题</div>
           </li>
           </router-link>
           <router-link to="/myAttents">
           <li>
-            <div class="count">13</div>
+            <div class="count">{{userInfo.attentCount}}</div>
             <div class="label">关注</div>
           </li>
           </router-link>
           <router-link to="/myFanses">
           <li>
-            <div class="count">234</div>
+            <div class="count">{{userInfo.fansCount}}</div>
             <div class="label">粉丝</div>
           </li>
           </router-link>
@@ -120,11 +120,13 @@
 <script>
   import TabBar from '@/components/tabbar'
   import Header from '@/components/header'
+  import {getUserInfo} from '@/api/user'
 
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        userInfo: {}
       }
     },
     components: {
@@ -143,6 +145,15 @@
           name: "myProfile"
         })
       }
+    },
+    created(){
+      getUserInfo({
+        uid: this.$store.state.userInfo.userId
+      })
+      .then(res => {
+        console.log(res)
+        this.userInfo = res.data.userInfo
+      })
     }
   };
 </script>

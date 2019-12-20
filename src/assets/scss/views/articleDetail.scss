@@ -70,7 +70,7 @@
         margin: 10px 0 0;
       }
 
-      .content{
+      .acontent{
         width: 100%;
 
         p{
@@ -81,15 +81,46 @@
         .image{
           width: 100%;
           display: flex;
+          background-color: #FFEBEB;
 
           img{
             width: 100%
           }
           
           .van-image{
-            width: 33vw;
+            width: 100%;
             height: 33vw;
             display: 1;
+          }
+        }
+
+        p:first-child{
+          margin: 5px 0 10px;
+        }
+      }
+
+      .qcontent{
+        width: 100%;
+
+        p{
+          font-size: 14px;
+          margin: 10px 0;
+        }
+
+        .image{
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+
+          li{
+            width: 31%;
+            margin: 1px 3px;
+
+            .van-image{
+              margin: 0;
+              width: 100%;
+              height: 112.85px;
+            }
           }
         }
 

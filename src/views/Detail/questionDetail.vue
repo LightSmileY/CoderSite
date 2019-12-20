@@ -54,13 +54,13 @@
               <van-tag color="#f2826a" plain>{{item}}</van-tag>
             </span>
           </div>
-          <ul class="content">
-            <li>
-              <p>{{questionInfo.content}}</p>
-              <div class="image" v-for="item in questionInfo.images">
+          <ul class="qcontent">
+            <p>{{questionInfo.content}}</p>
+            <div class="image">
+              <li v-for="item in questionInfo.images">
                 <van-image fit="cover" :src="item"/>
-              </div>
-            </li>
+              </li>
+            </div>
           </ul>
           <div class="operinfo">
             <!-- 点赞、评论、收藏信息 -->
@@ -235,6 +235,16 @@
       },
       /*点赞*/
       like(){
+        ImagePreview({
+  images: [
+    'https://img.yzcdn.cn/1.jpg',
+    'https://img.yzcdn.cn/2.jpg'
+  ],
+  startPosition: 1,
+  onClose() {
+    // do something
+  }
+});
         addLike(this.getAddInfo())
         .then(res => {
           console.log(res)
@@ -252,8 +262,8 @@
         })
         .then(res => {
           console.log(res)
-          this.questionInfo.isLike = false
-          this.questionInfo.likeCount --
+          this.questionInfo.isCollect = false
+          this.questionInfo.collectCount --
         })
         .catch(err => {
           console.log(err)
@@ -264,8 +274,8 @@
         addFavorite(this.getAddInfo())
         .then(res => {
           console.log(res)
-          this.questionInfo.isLike = true
-          this.questionInfo.likeCount ++
+          this.questionInfo.isCollect = true
+          this.questionInfo.collectCount ++
         })
         .catch(err => {
           console.log(err)

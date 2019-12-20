@@ -7,7 +7,7 @@
           <van-image
             lazy-load
             fit="cover"
-            :src="item.avatar">
+            :src="item.avatar || 'http://fengblog.xyz/images/flyy/avatar.jpg'">
             <template v-slot:loading>
               <van-loading type="spinner" size="20" />
             </template>
@@ -19,7 +19,7 @@
             {{item.nickname}}
           </div>
           <div class="signiture">
-            {{item.signature}}
+            {{item.signature || '这人很懒，什么也没说~'}}
           </div>
         </div>
       </div>

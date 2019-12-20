@@ -30,6 +30,14 @@ export const getUserById = params => {
   })
 }
 
+export const getUserInfo = params => {
+  return axios({
+    url: userBaseURL + 'getUserInfo',
+    method: 'get',
+    params
+  })
+}
+
 /*修改用户资料*/
 export const updateUserInfo = data => {
   return axios({
