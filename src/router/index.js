@@ -63,6 +63,11 @@ export default new Router({
       component: () => import('@/views/Mine')
     },
     {
+      path: '/userpage',
+      name: 'userpage',
+      component: () => import('@/views/Mine/userpage')
+    },
+    {
       path: '/myArticles',
       name: 'myArticles',
       component: () => import('@/views/Mine/myArticles')

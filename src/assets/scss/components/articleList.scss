@@ -2,19 +2,22 @@
 @import '@/assets/scss/public/mixins';
 
 #articleList{
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0 2vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 10px 2%;
+  margin: 10px 0;
   padding-bottom: 20px;
 
   li{
-    width: 46%;
-    margin: 0 5px 12px;
+    width: 45%;
     padding-bottom: 1px;
     border-radius: $border-small;
     border: 1px solid $border-lighter;
     background-color: #fff;
+    margin-bottom: 20px;
 
     .image{
       width: 100%;
@@ -27,6 +30,8 @@
     }
 
     .title{
+      height: 44px;
+      overflow: hidden;
       font-size: 15px;
       font-weight: bold;
       line-height: 22px;

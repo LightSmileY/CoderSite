@@ -1,5 +1,5 @@
 <template>
-  <div id="commentList">
+  <ul id="commentList">
     <li v-for="item in question.answers">
       <div class="avatar">
         <!-- van图片 -->
@@ -24,7 +24,7 @@
         </div>
       </div>
     </li>
-  </div>
+  </ul>
 </template>
 
 <script>

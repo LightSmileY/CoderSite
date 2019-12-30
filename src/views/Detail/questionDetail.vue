@@ -1,5 +1,5 @@
 <template>
-  <div id="articleDetail">
+  <div id="questionDetail">
     <van-nav-bar
       fixed
       left-arrow
@@ -16,7 +16,7 @@
                 <van-image
                   lazy-load
                   fit="cover"
-                  :src="questionInfo.avatar">
+                  :src="$store.state.userInfo.avatarId">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
                   </template>
@@ -100,7 +100,32 @@
             </ul>
           </div>
           <van-divider content-position="left">回答</van-divider>
-          <comment-list :question="questionInfo"/>
+          <ul id="commentList">
+            <li v-for="item in questionInfo.answers">
+              <div class="avatar">
+                <!-- van图片 -->
+                <van-image
+                  lazy-load
+                  fit="cover"
+                  :src="item.avatar">
+                  <template v-slot:loading>
+                    <van-loading type="spinner" size="20" />
+                  </template>
+                  <template v-slot:error>加载失败</template>
+                </van-image>
+              </div>
+              <div class="main">
+                <div class="name">{{item.nickname}}</div>
+                <div class="content">
+                  {{item.content}}
+                </div>
+                <div class="info">
+                  <div class="info-time">{{item.time}}</div>
+                  <div class="info-reply">回复</div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </van-pull-refresh>
       </div>
     </div>
@@ -190,14 +215,14 @@
       },
       /*删除问题*/
       deleteQuestion(){
-        Dialog.confirm({
-          title: '标题',
-          message: '弹窗内容'
-        }).then(() => {
+        // Dialog.confirm({
+        //   title: '标题',
+        //   message: '弹窗内容'
+        // }).then(() => {
           
-        }).catch(() => {
+        // }).catch(() => {
           
-        });
+        // });
         // deleteQuestionById({
         //   qid: this.questionInfo.qid
         // })
@@ -235,16 +260,16 @@
       },
       /*点赞*/
       like(){
-        ImagePreview({
-  images: [
-    'https://img.yzcdn.cn/1.jpg',
-    'https://img.yzcdn.cn/2.jpg'
-  ],
-  startPosition: 1,
-  onClose() {
-    // do something
-  }
-});
+        // ImagePreview({
+        //   images: [
+        //     'https://img.yzcdn.cn/1.jpg',
+        //     'https://img.yzcdn.cn/2.jpg'
+        //   ],
+        //   startPosition: 1,
+        //   onClose() {
+        //     // do something
+        //   }
+        // });
         addLike(this.getAddInfo())
         .then(res => {
           console.log(res)
@@ -301,6 +326,8 @@
         addAnswer(this.getAddInfo(this.commentContent))
         .then(res => {
           console.log(res)
+          this.showPostBox = false
+          this.getQuestion()
         })
         .catch(err => {
           console.log(err)
@@ -324,5 +351,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/scss/views/articleDetail';
+  @import '@/assets/scss/views/questionDetail';
 </style>

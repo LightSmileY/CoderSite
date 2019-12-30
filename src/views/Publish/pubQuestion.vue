@@ -168,6 +168,7 @@
       publish(){
         this.questionInfo.qid = uuid()
         this.questionInfo.postTime = new Date()
+        console.log(this.questionInfo)
         addQuestion(this.questionInfo)
         .then(res => {
           console.log(res)
@@ -175,7 +176,7 @@
           this.$router.push({
             name: 'questionPublishSuccess',
             query: {
-              qid: this.questionInfo.qid
+              userList: res.data.userList
             }
           })
         })

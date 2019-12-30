@@ -2,13 +2,12 @@
   <div id="message">
     <van-nav-bar
       fixed
-      z-index="1000"
+      :z-index="1000"
       title="消息"
     />
     <div id="main">
       <!-- 标签页 -->
       <van-tabs 
-      v-model="active"
       swipeable
       title-active-color="#90C2EF">
         <van-tab 
@@ -17,16 +16,7 @@
         <!-- 下拉刷新 -->
           <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
             <div class="message-list">
-              <message-list/>
-            </div>
-          </van-pull-refresh>
-        </van-tab>
-        <van-tab 
-        title="回答"
-        >
-          <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-            <div class="answer-list">
-              <answer-list me="false"/>
+              <message-list :arrayList="newMessage"/>
             </div>
           </van-pull-refresh>
         </van-tab>
@@ -35,7 +25,7 @@
         >
           <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
             <div class="chat-list">
-              <chat-list/>
+              <chat-list :arrayList="myChatList"/>
             </div>
           </van-pull-refresh>
         </van-tab>
@@ -51,11 +41,15 @@
   import MessageList from '@/components/messageList'
   import AnswerList from '@/components/answerList'
   import ChatList from '@/components/chatList'
+  import {getUserInfo} from '@/api/user'
+  import {getNewMessage, getMyChatList} from '@/api/other'
 
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        newMessage: [],
+        myChatList: []
       }
     },
     components: {
@@ -72,6 +66,24 @@
           this.isLoading = false
         }, 500)
       }
+    },
+    created(){
+      getNewMessage({
+        time: '2019',
+        uid: this.$store.state.userInfo.userId
+      })
+      .then(res => {
+        console.log(res)
+        this.newMessage = res.data.messages
+      })
+
+      getMyChatList({
+        uid: this.$store.state.userInfo.userId
+      })
+      .then(res => {
+        console.log(res)
+        this.myChatList = res.data.chatList
+      })
     }
   };
 </script>

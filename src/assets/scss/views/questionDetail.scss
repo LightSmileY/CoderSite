@@ -1,2 +1,222 @@
 @import '@/assets/scss/public/variables';
+@import '@/assets/scss/public/mixins';@import '@/assets/scss/public/variables';
 @import '@/assets/scss/public/mixins';
+
+#questionDetail{
+
+  .container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+
+    .article{
+      width: 94%;
+      margin-top: 55px;
+
+      .user{
+        width: 100%;
+        height: 38px;
+        box-sizing: border-box;
+        display: flex;
+
+        .user-info{
+          flex-grow: 1;
+          height: 100%;
+          display: flex;
+
+          .avatar{
+            width: 36px;
+            height: 36px;
+            border: 1px solid #DADADA;
+            border-radius: 50%;
+            overflow: hidden;
+
+            .van-image{
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .name-time{
+            height: 100%;
+            margin-left: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            
+            .name{
+              font-size: 14px;
+              margin-top: 1px;
+            }
+            .time{
+              font-size: 10px;
+              margin-top: 3px;
+            }
+          }
+        }
+        .attent{
+          width: 80px;
+          @include flex-jus-end();
+
+          span{
+            font-size: 15px;
+            color: #2B62DF;
+          }
+        }
+      }
+
+      .title{
+        font-size: 15px;
+        color: #3154D0;
+        margin: 10px 0 0;
+      }
+
+      .acontent{
+        width: 100%;
+
+        p{
+          font-size: 14px;
+          margin: 10px 0;
+        }
+
+        .image{
+          width: 100%;
+          display: flex;
+          background-color: #FFEBEB;
+
+          img{
+            width: 100%
+          }
+          
+          .van-image{
+            width: 100%;
+            height: 33vw;
+            display: 1;
+          }
+        }
+
+        p:first-child{
+          margin: 5px 0 10px;
+        }
+      }
+
+      .qcontent{
+        width: 100%;
+
+        p{
+          font-size: 14px;
+          margin: 10px 0;
+        }
+
+        .image{
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+
+          li{
+            width: 31%;
+            margin: 1px 3px;
+
+            .van-image{
+              margin: 0;
+              width: 100%;
+              height: 112.85px;
+            }
+          }
+        }
+
+        p:first-child{
+          margin: 5px 0 10px;
+        }
+      }
+
+      .operinfo{
+        width: 100%;
+        margin-top: 10px;
+        @include flex-jus-end();
+
+        ul{
+          width: 60%;
+          @include flex-space-around();
+
+          li{
+            @include flex-center();
+            
+            .icon{
+              @include flex-center();
+              
+              .van-icon{
+                font-size: 23px;
+              }
+            }
+            .label{
+              font-size: 14px;
+              margin-left: 3px;
+              // color: $regular-text;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .postMessage{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+  #commentList{
+
+    li{
+      list-style: none;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+
+      .avatar{
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 1px solid #D4D4D4;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        .van-image{
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .main{
+        flex-grow: 1;
+        padding-left: 8px;
+
+        .name{
+          
+        }
+
+        .content{
+          font-size: 13px;
+          color: $regular-text;
+          margin: 5px 0;
+          line-height: 16px;
+        }
+
+        .info{
+          display: flex;
+          font-size: 13px;
+
+          &-time{
+            
+          }
+
+          &-reply{
+            color: #3D37CE;
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -131,33 +131,37 @@
         })
       },
       getHot(){
-        getHotArticles({page: this.pageIndex.hotArticles})
+        getNewArticles({page: this.pageIndex.hotArticles})
         .then(res => {
           console.log(res)
-          this.dataList.hotArticles = res.data.articleList
+          this.dataList.hotArticles = res.data.articleList.sort((a, b) => {
+            let x = a["likeCount"]
+            let y = b["likeCount"]
+            return x > y ? -1 : x < y ? 1 : 0
+          })
         })
         .catch(err => {
           console.log(err)
         })
       },
       getRecommend(){
-        getRecommendArticles({page: this.pageIndex.recommendArticles})
+        getNewArticles({page: this.pageIndex.recommendArticles})
         .then(res => {
           console.log(res)
-          this.dataList.recommendArticles = res.data.articleList
+          this.dataList.recommendArticles = res.data.articleList.slice(2, 8)
         })
         .catch(err => {
           console.log(err)
         })
       },
       getFallows(){
-        getFollowsArticles({
+        getNewArticles({
           uid: 'lightsmiley',
           page: this.pageIndex.followsArticles
         })
         .then(res => {
           console.log(res)
-          this.dataList.followsArticles = res.data.articleList
+          this.dataList.followsArticles = res.data.articleList.slice(2,6)
         })
         .catch(err => {
           console.log(err)

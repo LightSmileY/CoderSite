@@ -39,11 +39,11 @@ export const getUserInfo = params => {
 }
 
 /*修改用户资料*/
-export const updateUserInfo = data => {
+export const updateUserInfo = params => {
   return axios({
-    url: userBaseURL + 'updateUserInfo',
+    url: userBaseURL + 'update',
     method: 'post',
-    data
+    params
   })
 }
 

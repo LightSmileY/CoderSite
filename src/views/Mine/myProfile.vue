@@ -5,6 +5,8 @@
       title="资料"
       left-arrow
       @click-left="goBack"
+      right-text="提交"
+      @click-right="updateUser"
     />
     <div class="container">
       <van-cell-group>
@@ -12,13 +14,18 @@
           v-model="lightsmiley"
           clearable
           label="用户名"
-          placeholder="lightsmiley"
+          :placeholder="userInfo.userId"
           disabled
         />
         <van-field
           v-model="userInfo.nickname"
           label="昵称"
           placeholder="请输入昵称"
+        />
+        <van-field
+          v-model="sex"
+          label="性别"
+          placeholder="男"
         />
         <van-field
           v-model="userInfo.birthday"
@@ -37,19 +44,17 @@
           <van-datetime-picker
             v-model="userInfo.birthday"
             type="date"
-            :min-date="minDate"
             :show-toolbar="false"
             :item-height="35"
           />
         </van-dialog>
-        
         <van-field
-          v-model="userInfo.email"
+          v-model="userInfo.mailbox"
           label="邮箱"
           placeholder="请输入邮箱"
         />
         <van-field
-          v-model="signiture"
+          v-model="userInfo.signature"
           clearable
           label="个性签名"
           placeholder="请输入个性签名"
@@ -61,13 +66,14 @@
 
 <script>
   import AnswerList from '@/components/answerList'
-  import {getUserInfo, updateUserInfo} from '@/api/user'
+  import {getUserById, updateUserInfo} from '@/api/user'
 
   export default {
     data(){
       return {
         show: false,
-        userInfo: {}
+        userInfo: {},
+        sex: '男'
       }
     },
     methods: {
@@ -80,16 +86,18 @@
       updateUser(){
         updateUserInfo(this.userInfo)
         .then(res => {
-          
+          console.log(res)
         })
       }
     },
     created(){
-      getUserInfo({
-        
+      getUserById({
+        uid: this.$store.state.userInfo.userId
       })
       .then(res => {
-        
+        console.log(res)
+        this.userInfo = res.data.userInfo
+        this.userInfo.birthday = '1998-08-22'
       })
     }
   };

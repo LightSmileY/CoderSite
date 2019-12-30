@@ -35,7 +35,7 @@
     <div class="container">
       <div class="articleList">
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          <article-list/>
+          <article-list :arrayList="articleList"/>
         </van-pull-refresh>
       </div>
     </div>
@@ -44,12 +44,16 @@
 
 <script>
   import ArticleList from '@/components/articleList'
+  import {
+    getArticlesByKeywords
+  } from '@/api/article'
 
   export default {
     data(){
       return {
         isLoading: false,
-        value: ""
+        value: "",
+        articleList: []
       }
     },
     components: {
@@ -57,7 +61,13 @@
     },
     methods: {
       onSearch(i){
-        
+        getArticlesByKeywords({
+          keyword: i,
+          page: 0
+        })
+        .then(res => {
+          this.articleList = res.data.articleList
+        })
       },
       goBack(){
         this.$router.go(-1)
@@ -68,6 +78,17 @@
           this.isLoading = false
         }, 500)
       }
+    },
+    created(){
+      this.value = this.$route.query.key
+      getArticlesByKeywords({
+        keyword: this.$route.query.key,
+        page: 0
+      })
+      .then(res => {
+        console.log(res)
+        this.articleList = res.data.articleList
+      })
     }
   };
 </script>

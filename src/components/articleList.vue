@@ -1,12 +1,12 @@
 <template>
   <ul id="articleList">
-    <li v-for="item in arrayList" @click="toArticleDetailPage(item.qid)">
+    <li v-for="item in arrayList" @click="toArticleDetailPage(item.aid)">
       <div class="image">
         <!-- van图片 -->
         <van-image
           lazy-load
           fit="cover"
-          :src="item.image">
+          :src="item.content.image">
           <template v-slot:loading>
             <van-loading type="spinner" size="20" />
           </template>
@@ -37,7 +37,7 @@
           <div class="icon">
             <van-icon name="chat-o" />
           </div>
-          <div class="label">{{item.answerCount}}</div>
+          <div class="label">{{item.commentCount}}</div>
         </div>
       </div>
     </li>

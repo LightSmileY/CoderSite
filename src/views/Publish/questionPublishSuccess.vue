@@ -15,7 +15,7 @@
       <div class="title">
         为您推荐以下用户
       </div>
-      <user-list answer="true"/>
+      <user-list answer="true" :arrayList="userList"/>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@
   export default {
     data(){
       return {
-
+        userList: []
       }
     },
     components: {
@@ -36,6 +36,9 @@
       goback(){
         this.$router.go(-2)
       }
+    },
+    created(){
+      this.userList = this.$route.query.userList
     }
   };
 </script>

@@ -1,13 +1,13 @@
 <template>
   <ul id="chatList">
-    <li v-for="item in 5" @click="toChatDetailPage()">
+    <li v-for="item in arrayList" @click="toChatDetailPage(item.uid)">
       <div class="infos">
         <div class="avatar">
           <!-- van图片 -->
           <van-image
             lazy-load
             fit="cover"
-            src="http://cdn.fengblog.xyz/avatar.jpg">
+            :src="item.avatar">
             <template v-slot:loading>
               <van-loading type="spinner" size="20" />
             </template>
@@ -16,15 +16,15 @@
         </div>
         <div class="name-message">
           <div class="name">
-            浅笑半离兮
+            {{item.nickname}}
           </div>
           <div class="message">
-            我推荐你用element-ui
+            {{item.message}}
           </div>
         </div>
       </div>
       <div class="tag">
-        <van-tag round type="danger">5</van-tag>
+        <van-tag round type="danger">1</van-tag>
       </div>
     </li>
   </ul>
@@ -38,7 +38,7 @@
       }
     },
     props: {
-      
+      arrayList: Array
     },
     methods: {
       toChatDetailPage(i){

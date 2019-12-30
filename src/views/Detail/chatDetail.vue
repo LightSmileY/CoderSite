@@ -1,7 +1,7 @@
 <template>
   <div id="chatDetail">
     <van-nav-bar
-      fixed="true"
+      :fixed="true"
       left-arrow
       @click-left="goBack"
       title="私聊"/>
@@ -10,13 +10,13 @@
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         <!-- 消息列表 -->
         <ul class="messageList">
-          <li class="message" v-for="item in 5">
-            <div class="you">
+          <li class="message" v-for="item in chatList">
+            <div class="you" v-if="item.uid != $store.state.userInfo.userId">
               <div class="avatar">
                 <van-image
                   lazy-load
                   fit="cover"
-                  src="http://cdn.fengblog.xyz/avatar.jpg">
+                  :src="item.avatar">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
                   </template>
@@ -24,18 +24,18 @@
                 </van-image>
               </div>
               <div class="message-content">
-                哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或嘻嘻嘻嘻嘻嘻嘻嘻寻寻
+                {{item.message}}
               </div>
               <!-- <div class="time">
-                14:45
+                {{item.time.slice(0.10)}}
               </div> -->
             </div>
-            <div class="me">
+            <div class="me" v-if="item.uid == $store.state.userInfo.userId">
               <div class="avatar">
                 <van-image
                   lazy-load
                   fit="cover"
-                  src="http://cdn.fengblog.xyz/avatar.jpg">
+                  :src="$store.state.userInfo.avatarId">
                   <template v-slot:loading>
                     <van-loading type="spinner" size="20" />
                   </template>
@@ -43,11 +43,8 @@
                 </van-image>
               </div>
               <div class="message-content">
-                嘻嘻嘻嘻嘻嘻嘻嘻寻寻
+                {{item.message}}
               </div>
-              <!-- <div class="time">
-                14:45
-              </div> -->
             </div>
           </li>
         </ul>
@@ -55,26 +52,29 @@
     </div>
     <div class="post">
       <van-field
-        v-model="sms"
+        v-model="message"
         center
         rows="1"
         autosize
         type="textarea"
         placeholder="请输入···"
       >
-        <van-button slot="button" size="small" type="primary">发送</van-button>
+        <van-button slot="button" @click="postChat" size="small" type="primary">发送</van-button>
       </van-field>
     </div>
   </div>
 </template>
 
 <script>
-  import {getTime} from '@/assets/js/pubfuncs'
+  import {uuid, getTime} from '@/assets/js/pubfuncs'
+  import {getMyChatListWithUser, addChat} from '@/api/other'
 
   export default {
     data(){
       return {
-        isLoading: false
+        isLoading: false,
+        chatList: [],
+        message: ''
       }
     },
     methods: {
@@ -86,7 +86,34 @@
           this.$toast('刷新成功')
           this.isLoading = false
         }, 500)
+      },
+      getMyChat(){
+        getMyChatListWithUser({
+          uid: this.$store.state.userInfo.userId,
+          objId: this.$route.query.id
+        })
+        .then(res => {
+          console.log(res)
+          this.chatList = res.data.chatList
+        })
+      },
+      postChat(){
+        addChat({
+          id: uuid(),
+          message: this.message,
+          objId: this.$route.query.id,
+          time: new Date(),
+          uid: this.$store.state.userInfo.userId
+        })
+        .then(res => {
+          console.log(res)
+          this.message = ''
+          this.getMyChat()
+        })
       }
+    },
+    created(){
+      this.getMyChat()
     }
   };
 </script>

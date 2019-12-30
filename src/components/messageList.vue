@@ -1,6 +1,6 @@
 <template>
   <ul id="messageList">
-    <li v-for="item in 5">
+    <li v-for="item in arrayList">
       <div class="user">
         <div class="user-info">
           <div class="avatar">
@@ -8,7 +8,7 @@
             <van-image
               lazy-load
               fit="cover"
-              src="http://cdn.fengblog.xyz/avatar.jpg">
+              :src="item.avatar">
               <template v-slot:loading>
                 <van-loading type="spinner" size="20" />
               </template>
@@ -17,10 +17,10 @@
           </div>
           <div class="name-time">
             <div class="name">
-              浅笑半离兮
+              {{item.nickname}}
             </div>
             <div class="time">
-              2019-11-23 21:56:30
+              {{item.time}}
             </div>
           </div>
         </div>
@@ -31,11 +31,20 @@
           round
           color="#939393"
           type="default" 
-          size="mini">+关注</van-button>
+          size="mini">{{item.attent?'已关注':'+关注'}}</van-button>
         </div>
       </div>
-      <div class="message-type">
+      <div class="message-type" v-if="item.messageType=='1'">
+        点赞了你的文章
+      </div>
+      <div class="message-type" v-if="item.messageType=='2'">
         收藏了你的文章
+      </div>
+      <div class="message-type" v-if="item.messageType=='3'">
+        评论了你的文章
+      </div>
+      <div class="message-type" v-if="item.messageType=='4'">
+        回答了你的文章
       </div>
       <div class="detail">
         <div class="image">
@@ -43,7 +52,7 @@
           <van-image
             lazy-load
             fit="cover"
-            src="http://cdn.fengblog.xyz/4b5190965f9d3befd880d3a333e67c4a.jpg">
+            :src="item.post.image">
             <template v-slot:loading>
               <van-loading type="spinner" size="20" />
             </template>
@@ -51,7 +60,7 @@
           </van-image>
         </div>
         <div class="desc">
-          哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+          {{item.post.para}}
         </div>
       </div>
     </li>
@@ -66,7 +75,7 @@
       }
     },
     props: {
-      
+      arrayList: Array
     }
   };
 </script>

@@ -26,7 +26,7 @@
       <div class="attent">
         <van-button v-if="attent" type="primary" color="#47CE8E" size="mini">已关注</van-button>
         <van-button v-if="fans" type="primary" color="#47CE8E" size="mini">{{item.isAttent?"已关注":"关注TA"}}</van-button>
-        <van-button v-if="answer" type="primary" color="#47CE8E" size="mini">请TA回答</van-button>
+        <van-button @click="toChat(item.uid)" v-if="answer" type="primary" color="#47CE8E" size="mini">请TA回答</van-button>
       </div>
     </li>
   </ul>
@@ -50,6 +50,12 @@
       toUserProfile(i){
         this.$router.push({
           name:'userProfile',
+          query: { id: i }
+        })
+      },
+      toChat(i){
+        this.$router.push({
+          name:'chatDetail',
           query: { id: i }
         })
       }

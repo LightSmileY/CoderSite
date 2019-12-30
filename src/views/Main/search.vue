@@ -21,21 +21,21 @@
       <van-divider content-position="left">最近搜索</van-divider>
       <div class="newsearch">
         <ul>
-          <li v-for="item in 9">TensorFlow</li>
+          <li v-for="item in searchWords" @click="onSearch(item)">{{item}}</li>
         </ul>
       </div>
       <van-divider content-position="left">猜你喜欢</van-divider>
       <div class="youlike">
         <ul>
-          <li v-for="item in 9">flex布局</li>
+          <li v-for="item in youLike" @click="onSearch(item)">{{item}}</li>
         </ul>
       </div>
       <div class="hotSearch">
         <div class="title">热搜榜</div>
         <div class="hotSearchList">
           <ul>
-            <li v-for="item in 10">
-              {{item}}. 热门框架Vue开发Web APP
+            <li v-for="(item,key) in hotSeaches" @click="onSearch(item)">
+              {{key+1}}. {{item}}
             </li>
           </ul>
         </div>
@@ -45,23 +45,32 @@
 </template>
 
 <script>
+import {searchWords, youLike, hotSeaches} from '@/assets/js/data'
 
   export default {
     data(){
       return {
-        value: ""
+        searchWords: [],
+        youLike: [],
+        hotSeaches: [],
+        value: ''
       }
     },
     methods: {
       onSearch(i){
         this.$router.push({
           name:'searchDetail',
-          query: { id: i }
+          query: { key: i }
         })
       },
       goBack(){
         this.$router.go(-1)
       }
+    },
+    created(){
+      this.searchWords = searchWords
+      this.youLike = youLike
+      this.hotSeaches = hotSeaches
     }
   };
 </script>

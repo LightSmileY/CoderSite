@@ -14,17 +14,17 @@
       </div>
       <div class="new">
         <div class="title">最新问题</div>
-          <qpost-list :arrayList="postList.newQuestions"/>
+          <qpost-list :arrayList="postList.newQuestions.slice(0,5)"/>
         <div class="more">加载更多···</div>
       </div>
       <div class="youlike">
         <div class="title">猜你喜欢</div>
-          <apost-list :arrayList="postList.recommendArticles"/>
+          <apost-list :arrayList="postList.recommendArticles.slice(0,5)"/>
         <div class="more">加载更多···</div>
       </div>
       <div class="hot">
         <div class="title">热门文章</div>
-          <apost-list :arrayList="postList.hotArticles"/>
+          <apost-list :arrayList="postList.hotArticles.slice(0,5)"/>
         <div class="more">加载更多···</div>
       </div>
     </van-pull-refresh>
@@ -41,7 +41,8 @@
   import {
     getHotArticles, 
     getRecommendArticles,
-    getAllArticles
+    getAllArticles,
+    getNewArticles
   } from '@/api/article'
   import {
     getNewQuestions
@@ -52,10 +53,9 @@
     data(){
       return {
         images: [
-          "http://cdn.fengblog.xyz/banner1.png",
-          "http://cdn.fengblog.xyz/banner2.jpg",
-          "http://cdn.fengblog.xyz/banner3.png",
-          "http://cdn.fengblog.xyz/banner4.png"
+          "http://cdn.fengblog.xyz/211.png",
+          "http://cdn.fengblog.xyz/213.png",
+          "http://cdn.fengblog.xyz/214.png"
         ],
         isLoading: false,
         pageIndex: {        //分页控制
@@ -99,8 +99,9 @@
         })
       },
       getYouLike(){
-        getAllArticles()
+        getNewArticles({page: this.pageIndex.hotArticles})
         .then(res => {
+          console.log(res)
           this.postList.recommendArticles = res.data.articleList
           this.postList.recommendArticles.sort((a, b) => {
             let x = a["postTime"]
@@ -110,8 +111,9 @@
         })
       },
       getHot(){
-        getAllArticles()
+        getNewArticles({page: this.pageIndex.recommendArticles})
         .then(res => {
+          console.log(res)
           this.postList.hotArticles = res.data.articleList
           this.postList.hotArticles.sort((a, b) => {
             let x = a["likeCount"]

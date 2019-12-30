@@ -18,7 +18,7 @@
           <dt>
             <img src="@/assets/icons/post.png" alt="">
           </dt>
-          <dd>发帖子</dd>
+          <dd>发文章</dd>
         </dl>
         <dl @click.stop="toPubQuestionPage">
           <dt>

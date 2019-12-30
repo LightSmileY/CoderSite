@@ -102,54 +102,54 @@ export const addArticle = data => {
 }
 
 /*删除一篇文章*/
-export const deleteArticle = params => {
+export const deleteArticleById = params => {
   return axios({
-    url: articleBaseURL + 'addArticle',
+    url: articleBaseURL + 'deleteArticleById',
     method: 'delete',
     params
   })
 }
 
 /*点赞*/
-export const likeArticle = params => {
+export const addLike = params => {
   return axios({
-    url: articleBaseURL + 'likeArticle',
+    url: articleBaseURL + 'addLike',
     method: 'post',
     params
   })
 }
 
 /*取消点赞*/
-export const unlikeArticle = params => {
+export const deleteLike = params => {
   return axios({
-    url: articleBaseURL + 'unlikeArticle',
+    url: articleBaseURL + 'deleteLike',
     method: 'delete',
     params
   })
 }
 
 /*收藏*/
-export const collectArticle = data => {
+export const addFavorite = data => {
   return axios({
-    url: articleBaseURL + 'collectArticle',
+    url: articleBaseURL + 'addFavorite',
     method: 'post',
     data
   })
 }
 
 /*取消收藏*/
-export const uncollectArticle = params => {
+export const deleteFavorite = params => {
   return axios({
-    url: articleBaseURL + 'uncollectArticle',
+    url: articleBaseURL + 'deleteFavorite',
     method: 'delete',
     params
   })
 }
 
 /*评论*/
-export const commentArticle = data => {
+export const addComment = data => {
   return axios({
-    url: articleBaseURL + 'commentArticle',
+    url: articleBaseURL + 'addComment',
     method: 'post',
     data
   })

@@ -1,13 +1,13 @@
 <template>
   <ul id="postList">
-    <li class="postList-item" v-for="item in arrayList" @click="toArticleDetailPage(123)">
+    <li class="postList-item" v-for="item in arrayList" @click="toArticleDetailPage(item.aid)">
       <!-- 左边图片 -->
       <div class="image">
         <!-- van图片 -->
         <van-image
           lazy-load
           fit="cover"
-          :src="item.content[0].image">
+          :src="item.content.image">
           <template v-slot:loading>
             <van-loading type="spinner" size="20" />
           </template>
@@ -16,7 +16,7 @@
       </div>
       <div class="section">
         <!-- 文章内容 -->
-        <div class="desc">{{item.content[0].para}}</div>
+        <div class="desc">{{item.content.para}}</div>
         <!-- 点赞、评论、收藏信息 -->
         <ul class="operinfo">
           <li class="operinfo-item">
@@ -35,7 +35,7 @@
             <div class="icon">
               <van-icon name="chat-o" />
             </div>
-            <div class="label">{{item.answerCount}}</div>
+            <div class="label">{{item.commentCount}}</div>
           </li>
         </ul>
       </div>

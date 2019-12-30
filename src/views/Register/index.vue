@@ -42,9 +42,9 @@
     data(){
       return {
         userInfo: {   //注册信息
-          avatarId: "",
+          avatarId: "http://cdn.fengblog.xyz/3333.jpg",
           birthday: "",
-          coverPicture: "",
+          coverPicture: "http://cdn.fengblog.xyz/bg.jpg",
           labels: [],
           mailbox: "",
           nickname: "",

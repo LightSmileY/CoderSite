@@ -23,7 +23,8 @@
             <van-image
               lazy-load
               fit="cover"
-              :src="userInfo.userBasicInfo.avatar">
+              @click="toUserpage"
+              :src="userInfo.userBasicInfo.avatarId">
               <template v-slot:loading>
                 <van-loading type="spinner" size="20" />
               </template>
@@ -136,13 +137,28 @@
     methods: {
       onRefresh() {
         setTimeout(() => {
-          this.$toast('刷新成功')
-          this.isLoading = false
+          getUserInfo({
+            uid: this.$store.state.userInfo.userId
+          })
+          .then(res => {
+            console.log(res)
+            this.userInfo = res.data.userInfo
+            this.$toast('刷新成功')
+            this.isLoading = false
+          })
         }, 500)
       },
       viewProfile(){
         this.$router.push({
           name: "myProfile"
+        })
+      },
+      toUserpage(){
+        this.$router.push({
+          name: 'userpage',
+          query: {
+            uid: this.userInfo.userId
+          }
         })
       }
     },
